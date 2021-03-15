@@ -6,6 +6,9 @@ var cors = require('cors')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var festivalsRouter = require('./routes/festival')
+var contactsRouter = require('./routes/contact')
+var jeuxRouter = require('./routes/jeu')
+var organisateursRouter = require('./routes/organisateur')
 
 var app = express();
 
@@ -20,6 +23,9 @@ app.use(cors())
 app.use('/home', indexRouter);
 app.use('/users', usersRouter);
 app.use('/festival', festivalsRouter)
+app.use('/contact', contactsRouter)
+app.use('/jeu', jeuxRouter)
+app.use('/organisateur', organisateursRouter)
 
 
 
