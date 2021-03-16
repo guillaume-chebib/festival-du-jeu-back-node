@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-const organisateur = require("../controller/organisateur_controller")
+const organisateur_controller = require("../controller/organisateur_controller")
 
 router.get('/', async function(req, res, next) {
     try {
-        const organisateurs = await organisateur.getAllOrganisateur()
+        const organisateurs = await organisateur_controller.getAllOrganisateur()
         console.log(organisateurs)
         res.status(200).json({ message: organisateurs})
     }

@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-const prisecontact = require("../controller/prisecontact_controller")
+const prisecontact_controller = require("../controller/prisecontact_controller")
 
 router.get('/', async function(req, res, next) {
     try {
-        const prisecontacts = await prisecontact.getAllPriseContact()
+        const prisecontacts = await prisecontact_controller.getAllPriseContact()
         console.log(prisecontacts)
         res.status(200).json({ message: prisecontacts})
     }
@@ -19,7 +19,7 @@ router.get('festival/:idFestival/societe/:idSociete', async function(req, res, n
     try {
         const idF = req.params.idFestival
         const idS = req.params.idSociete
-        const prisecontact = await prisecontact.getPriseContactById(idF, idS)
+        const prisecontact = await prisecontact_controller.getPriseContactById(idF, idS)
         console.log(prisecontact)
         res.status(200).json({ message: prisecontact})
     }
@@ -32,7 +32,7 @@ router.get('festival/:idFestival/societe/:idSociete', async function(req, res, n
 router.get('/statut/:statut', async function(req, res, next) {
     try {
         const statut = req.params.statut
-        const prisecontact = await prisecontact.getPriseContactByStatus(statut)
+        const prisecontact = await prisecontact_controller.getPriseContactByStatus(statut)
         console.log(prisecontact)
         res.status(200).json({ message: prisecontact})
     }

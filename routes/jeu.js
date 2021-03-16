@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-const jeu = require("../controller/jeu_controller")
+const jeu_controller = require("../controller/jeu_controller")
 
 router.get('/', async function(req, res, next) {
     try {
-        const jeux = await jeu.getAllJeu()
+        const jeux = await jeu_controller.getAllJeu()
         console.log(jeux)
         res.status(200).json({ message: jeux})
     }
@@ -18,7 +18,9 @@ router.get('/', async function(req, res, next) {
 router.get('/:id', async function(req, res, next) {
     try {
         const id = req.params.id
-        const jeu = await jeu.getJeuById(id)
+
+        const jeu = await jeu_controller.getJeuById(id)
+
         console.log(jeu)
         res.status(200).json({ message: jeu})
     }
@@ -31,7 +33,7 @@ router.get('/:id', async function(req, res, next) {
 router.get('/editeur/:id', async function(req, res, next) {
     try {
         const id = req.params.id
-        const jeux = await jeu.getJeuByIdEditeur(id)
+        const jeux = await jeu_controller.getJeuByIdEditeur(id)
         console.log(jeux)
         res.status(200).json({ message: jeux})
     }
@@ -44,7 +46,7 @@ router.get('/editeur/:id', async function(req, res, next) {
 router.get('/type/:id', async function(req, res, next) {
     try {
         const id = req.params.id
-        const jeux = await jeu.getJeuByType(id)
+        const jeux = await jeu_controller.getJeuByType(id)
         console.log(jeux)
         res.status(200).json({ message: jeux})
     }
@@ -57,7 +59,7 @@ router.get('/type/:id', async function(req, res, next) {
 router.get('/type/:nom', async function(req, res, next) {
     try {
         const nom = req.params.nom
-        const jeux = await jeu.getJeuByTypeName(nom)
+        const jeux = await jeu_controller.getJeuByTypeName(nom)
         console.log(jeux)
         res.status(200).json({ message: jeux})
     }

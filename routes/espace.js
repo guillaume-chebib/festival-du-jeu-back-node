@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-const espace = require("../controller/espace_controller")
+const espace_controller = require("../controller/espace_controller")
 
 router.get('/', async function(req, res, next) {
     try {
-        const espaces = await espace.getAllEspace()
+        const espaces = await espace_controller.getAllEspace()
         console.log(espaces)
         res.status(200).json({ message: espaces})
     }
@@ -18,7 +18,7 @@ router.get('/', async function(req, res, next) {
 router.get('/:id', async function(req, res, next) {
     try {
         const id = req.params.id
-        const espace = await espace.getEspaceById(id)
+        const espace = await espace_controller.getEspaceById(id)
         console.log(espace)
         res.status(200).json({ message: espace})
     }
@@ -31,7 +31,7 @@ router.get('/:id', async function(req, res, next) {
 router.get('/festival/:id', async function(req, res, next) {
     try {
         const id = req.params.id
-        const espace = await espace.getEspaceByIdFestival(id)
+        const espace = await espace_controller.getEspaceByIdFestival(id)
         console.log(espace)
         res.status(200).json({ message: espace})
     }

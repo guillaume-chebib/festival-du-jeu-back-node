@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-const zone = require("../controller/zone_controller")
+const zone_controller = require("../controller/zone_controller")
 
 router.get('/', async function(req, res, next) {
     try {
-        const zones = await zone.getAllZone()
+        const zones = await zone_controller.getAllZone()
         console.log(zones)
         res.status(200).json({ message: zones})
     }
@@ -18,7 +18,7 @@ router.get('/', async function(req, res, next) {
 router.get('/:id', async function(req, res, next) {
     try {
         const id = req.params.id
-        const zone = await zone.getZoneById(id)
+        const zone = await zone_controller.getZoneById(id)
         console.log(zone)
         res.status(200).json({ message: zone})
     }
@@ -31,7 +31,7 @@ router.get('/:id', async function(req, res, next) {
 router.get('/festival/:id', async function(req, res, next) {
     try {
         const id = req.params.id
-        const zone = await zone.getZoneByIdFestival(id)
+        const zone = await zone_controller.getZoneByIdFestival(id)
         console.log(zone)
         res.status(200).json({ message: zone})
     }

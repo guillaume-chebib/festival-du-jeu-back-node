@@ -37,6 +37,7 @@ async function getJeuByTypeName(nom){
 }
 
 async function getJeuById(id){
+
     try{
         return await jeu.getJeuById(id)
     }

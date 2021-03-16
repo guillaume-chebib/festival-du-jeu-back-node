@@ -11,6 +11,7 @@ var jeuxRouter = require('./routes/jeu')
 var organisateursRouter = require('./routes/organisateur')
 var espacesRouter = require('./routes/espace')
 var zonesRouter = require('./routes/zone')
+var reservationRouter = require('./routes/reservation')
 
 var app = express();
 
@@ -30,6 +31,7 @@ app.use('/jeu', jeuxRouter)
 app.use('/organisateur', organisateursRouter)
 app.use('/espace', espacesRouter)
 app.use('/zone', zonesRouter)
+app.use('/reservation', reservationRouter)
 
 
 

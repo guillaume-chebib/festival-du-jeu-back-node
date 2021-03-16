@@ -4,9 +4,10 @@ var router = express.Router();
 const reservation_controller = require("../controller/reservation_controller")
 
 router.get('/:id', async function(req, res, next) {
+
     try {
         const id = req.params.id
-        const reservation = await reservation_controller.getReservationById()
+        const reservation = await reservation_controller.getReservationById(id)
         console.log(reservation)
         res.status(200).json({ message: reservation})
     }
@@ -15,3 +16,6 @@ router.get('/:id', async function(req, res, next) {
     }
 
 });
+
+
+module.exports = router;

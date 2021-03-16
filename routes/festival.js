@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-const festival = require("../controller/festival_controller")
+const festival_controller = require("../controller/festival_controller")
 
 router.get('/', async function(req, res, next) {
     try {
-        const festivals = await festival.getAllFestival()
+        const festivals = await festival_controller.getAllFestival()
         res.status(200).json({ message: festivals})
     }
     catch (e) {
@@ -16,7 +16,7 @@ router.get('/', async function(req, res, next) {
 
 router.post('/', async function(req, res, next) {
     try {
-        await festival.createFestival(req.body)
+        await festival_controller.createFestival(req.body)
         res.status(200).json({message:"success"})
 
     }
