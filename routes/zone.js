@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const zone = require("../controller/zonecontroller")
+const zone = require("../controller/zone_controller")
 
 router.get('/', async function(req, res, next) {
     try {

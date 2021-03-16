@@ -1,4 +1,4 @@
-const organisateur = require("../model/organisateur")
+const organisateur = require("../model/organisateur_model")
 
 async function getAllOrganisateur(){
     try{

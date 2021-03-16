@@ -1,4 +1,4 @@
-const zone = require("../model/zone")
+const zone = require("../model/zone_model")
 
 async function getAllZone(){
     try{

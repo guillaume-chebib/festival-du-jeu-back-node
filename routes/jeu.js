@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const jeu = require("../controller/jeucontroller")
+const jeu = require("../controller/jeu_controller")
 
 router.get('/', async function(req, res, next) {
     try {

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const contact = require("../controller/contactcontroller")
+const contact = require("../controller/contact_controller")
 
 router.get('/', async function(req, res, next) {
     try {
