@@ -43,7 +43,6 @@ router.get('/societe/:id', async function(req, res, next) {
 
 });
 
-<<<<<<< HEAD
 //======================= POST ========================//
 
 router.post('/', async function(req, res, next) {
@@ -59,6 +58,4 @@ router.post('/', async function(req, res, next) {
 });
 
 module.exports = router;
-=======
-module.exports = router;
->>>>>>> dc30402854c9ede2ca10f47fb36fa2e23d62879b
+
