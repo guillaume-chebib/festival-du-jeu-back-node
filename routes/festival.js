@@ -17,7 +17,7 @@ router.get('/', async function(req, res, next) {
 router.post('/', async function(req, res, next) {
     try {
         await festival.createFestival(req.body)
-        res.status(200).json({message:"sucess"})
+        res.status(200).json({message:"success"})
 
     }
     catch (e) {

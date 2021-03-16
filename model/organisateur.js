@@ -3,7 +3,7 @@ const db = require('../db')
 
 async function createOrganisateur(prenom,nom,email,est_admin,mot_de_passe) {
     try {
-        const {rows} = await db.query("INSERT INTO public.\"Organisateur\" (prenom_organisateur, nom_organisateur, email_organisateur, est_admin_organisateur, mot_de_passe_organisateur) VALUES(?, ?, ?, ?, ?);", [prenom,nom,email,est_admin,mot_de_passe])
+        const {rows} = await db.query("INSERT INTO public.\"Organisateur\" (prenom_organisateur, nom_organisateur, email_organisateur, est_admin_organisateur, mot_de_passe_organisateur) VALUES($1, $2, $3, $4, $5);", [prenom,nom,email,est_admin,mot_de_passe])
         return rows
     }
     catch (e) {
@@ -23,7 +23,7 @@ async function getAllOrganisateur() {
 
 async function deleteOrganisateur(id) {
     try {
-        const {rows} = await db.query('DELETE FROM public."Organisateur" WHERE id_organisateur = ?;', [id])
+        const {rows} = await db.query('DELETE FROM public."Organisateur" WHERE id_organisateur = $1;', [id])
         return rows
     }
     catch (e) {
@@ -34,7 +34,7 @@ async function deleteOrganisateur(id) {
 
 async function getOrganisateurById(id) {
     try {
-        const {rows} = await db.query('SELECT * FROM public."Organisateur" WHERE id_organisateur = ?;', [id])
+        const {rows} = await db.query('SELECT * FROM public."Organisateur" WHERE id_organisateur = $1;', [id])
         return rows
     }
     catch (e) {

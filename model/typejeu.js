@@ -3,7 +3,7 @@ const db = require('../db')
 
 async function createTypeJeu(nom) {
     try {
-        const {rows} = await db.query("INSERT INTO public.\"Type_Jeu\" (nom_type_jeu) VALUES(?);", [nom])
+        const {rows} = await db.query("INSERT INTO public.\"Type_Jeu\" (nom_type_jeu) VALUES($1);", [nom])
         return rows
     }
     catch (e) {
@@ -23,7 +23,7 @@ async function getAllTypeJeu() {
 
 async function deleteTypeJeu(id) {
     try {
-        const {rows} = await db.query('DELETE FROM public."Type_Jeu" WHERE id_type_jeu = ?;', [id])
+        const {rows} = await db.query('DELETE FROM public."Type_Jeu" WHERE id_type_jeu = $1;', [id])
         return rows
     }
     catch (e) {
@@ -33,7 +33,7 @@ async function deleteTypeJeu(id) {
 
 async function getTypeJeuById(id) {
     try {
-        const {rows} = await db.query('SELECT * FROM public."Type_Jeu" WHERE id_type_jeu = ?;', [id])
+        const {rows} = await db.query('SELECT * FROM public."Type_Jeu" WHERE id_type_jeu = $1;', [id])
         return rows
     }
     catch (e) {

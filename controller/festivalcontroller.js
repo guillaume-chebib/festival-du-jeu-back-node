@@ -17,4 +17,20 @@ async function createFestival(body){
         throw e
     }
 }
-module.exports = {getAllFestival,createFestival}
+async function updateFestival(body){
+    try{
+        await festival.updateFestival(body.id,body.annee,body.nom)
+    }
+    catch (e) {
+        throw e
+    }
+}
+async function getFestivalById(body){
+    try{
+        await festival.getFestivalById(body.id)
+    }
+    catch (e) {
+        throw e
+    }
+}
+module.exports = {getAllFestival,createFestival,updateFestival,getFestivalById}

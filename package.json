@@ -7,7 +7,9 @@
     "client": "cd ../festival-du-jeu-front-react && npm start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon app.js",
-    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "devso": "concurrently --kill-others-on-fail \"npm run serverso\" \"npm run client\"",
+    "serverso": "nodemon start"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
