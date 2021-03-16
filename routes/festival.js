@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const festival = require("../controller/festivalcontroller")
+const festival = require("../controller/festival_controller")
 
 router.get('/', async function(req, res, next) {
     try {

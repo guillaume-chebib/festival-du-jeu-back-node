@@ -1,4 +1,4 @@
-const contact = require("../model/contact")
+const contact = require("../model/contact_model")
 //const societe = require("../model/societe")
 
 async function createContact(body){

@@ -1,4 +1,4 @@
-const prisecontact = require("../model/prisecontact")
+const prisecontact = require("../model/prisecontact_model")
 
 async function getAllPriseContact(){
     try{

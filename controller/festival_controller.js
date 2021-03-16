@@ -1,4 +1,4 @@
-const festival = require("../model/festival")
+const festival = require("../model/festival_model")
 
 async function getAllFestival(){
     try{

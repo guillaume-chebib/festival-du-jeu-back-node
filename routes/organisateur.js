@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const organisateur = require("../controller/organisateurcontroller")
+const organisateur = require("../controller/organisateur_controller")
 
 router.get('/', async function(req, res, next) {
     try {

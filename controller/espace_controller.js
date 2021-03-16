@@ -1,4 +1,4 @@
-const espace = require("../model/espace")
+const espace = require("../model/espace_model")
 
 async function getAllEspace(){
     try{
