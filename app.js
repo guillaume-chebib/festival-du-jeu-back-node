@@ -9,6 +9,8 @@ var festivalsRouter = require('./routes/festival')
 var contactsRouter = require('./routes/contact')
 var jeuxRouter = require('./routes/jeu')
 var organisateursRouter = require('./routes/organisateur')
+var espacesRouter = require('./routes/espace')
+var zonesRouter = require('./routes/zone')
 
 var app = express();
 
@@ -26,6 +28,8 @@ app.use('/festival', festivalsRouter)
 app.use('/contact', contactsRouter)
 app.use('/jeu', jeuxRouter)
 app.use('/organisateur', organisateursRouter)
+app.use('/espace', espacesRouter)
+app.use('/zone', zonesRouter)
 
 
 

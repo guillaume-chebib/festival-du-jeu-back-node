@@ -31,7 +31,8 @@ async function updateFestival(id,year,name) {
 
 async function getFestivalById(id) {
     try {
-        const res = await db.query('SELECT * FROM public."Festival" WHERE id_festival = $1;', [id])
+        const {rows} = await db.query('SELECT * FROM public."Festival" WHERE id_festival = $1;', [id])
+        return rows;
     }
     catch (e) {
         throw e
