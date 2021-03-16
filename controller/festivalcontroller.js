@@ -8,4 +8,13 @@ async function getAllFestival(){
         throw e
     }
 }
-module.exports = {getAllFestival}
+
+async function createFestival(body){
+    try{
+        await festival.createFestival(body.annee,body.nom)
+    }
+    catch (e) {
+        throw e
+    }
+}
+module.exports = {getAllFestival,createFestival}
