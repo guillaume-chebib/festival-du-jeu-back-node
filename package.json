@@ -6,7 +6,7 @@
     "start": "node ./bin/www",
     "client": "cd ../festival-du-jeu-front-react && npm start",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon server.js",
+    "server": "nodemon app.js",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
   },
   "dependencies": {
@@ -16,7 +16,6 @@
     "dotenv": "^8.2.0",
     "express": "~4.16.1",
     "morgan": "~1.9.1",
-    "nodemon": "^2.0.7",
     "pg": "^8.5.1"
   },
   "devDependencies": {
