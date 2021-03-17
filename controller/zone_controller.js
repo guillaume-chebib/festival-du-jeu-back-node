@@ -9,18 +9,18 @@ async function getAllZone(){
     }
 }
 
-async function getZoneByIdFestival(id_festival){
+async function getZoneByIdFestival(params){
     try{
-        return await zone.getZoneByIdFestival(id_festival)
+        return await zone.getZoneByIdFestival(params.id)
     }
     catch (e) {
         throw e
     }
 }
 
-async function getZoneById(id){
+async function getZoneById(params){
     try{
-        return await zone.getZoneById(id)
+        return await zone.getZoneById(params.id)
     }
     catch (e) {
         throw e
