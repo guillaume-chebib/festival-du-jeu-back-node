@@ -29,7 +29,7 @@ async function getJeuReserveByIdReservation(params){
 
 async function getJeuReserveByIdZone(params){
     try{
-        return await jeu.getJeuReserveByIdZone(params.id)
+        return await jeu.getJeuReserveByIdZone(params.id_zone)
     }
     catch (e) {
         throw e

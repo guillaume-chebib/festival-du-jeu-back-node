@@ -71,7 +71,7 @@ router.get('/:id/zone/jeu', async function(req, res, next) {
         const zones = await zone_controller.getZoneByIdFestival(req.params)
         console.log(zones)
         for (i = 0; i < zones.length; i++) {
-            let jeuxZone = await jeu_reserve_controller.getJeuReserveByIdZone(zones[i].id_zone)
+            let jeuxZone = await jeu_reserve_controller.getJeuReserveByIdZone(zones[i])
             json_temp = {zone : zones[i], jeux : jeuxZone}
             res_json = res_json.concat(json_temp);
         }
