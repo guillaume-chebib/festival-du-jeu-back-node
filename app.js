@@ -12,7 +12,6 @@ var organisateursRouter = require('./routes/organisateur')
 var espacesRouter = require('./routes/espace')
 var zonesRouter = require('./routes/zone')
 var reservationRouter = require('./routes/reservation')
-
 var app = express();
 
 app.use(logger('dev'));

@@ -25,12 +25,15 @@ async function updateFestival(body){
         throw e
     }
 }
-async function getFestivalById(body){
+
+async function getFestivalById(params){
     try{
-        await festival.getFestivalById(body.id)
+        return await festival.getFestivalById(params.id)
     }
     catch (e) {
         throw e
     }
 }
+
+
 module.exports = {getAllFestival,createFestival,updateFestival,getFestivalById}
