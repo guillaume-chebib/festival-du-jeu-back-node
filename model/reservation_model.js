@@ -1,8 +1,10 @@
+
+
 const db = require('../db')
 
 async function getReservationById(id_reservation) {
     try {
-
+        console.log(id_reservation)
         const query = 'SELECT * FROM public."Reservation" WHERE id_reservation = $1;'
         const {rows} = await db.query(query, [id_reservation])
 
@@ -12,6 +14,17 @@ async function getReservationById(id_reservation) {
         throw e
     }
 }
+async function getReservationByIdFestival(id_festival) {
+    try {
+        const query = 'SELECT * FROM public."Reservation" WHERE id_festival_reservation = $1;'
+        const {rows} = await db.query(query, [id_festival])
+
+        return rows
+    }
+    catch (e) {
+        throw e
+    }
+}
 
 
-module.exports = {getReservationById}
+module.exports = {getReservationById, getReservationByIdFestival}

@@ -6,9 +6,7 @@ const reservation_controller = require("../controller/reservation_controller")
 router.get('/:id', async function(req, res, next) {
 
     try {
-        const id = req.params.id
-        const reservation = await reservation_controller.getReservationById(id)
-        console.log(reservation)
+        const reservation = await reservation_controller.getReservationById(req.params)
         res.status(200).json({ message: reservation})
     }
     catch (e) {
