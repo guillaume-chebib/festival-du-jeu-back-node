@@ -42,4 +42,15 @@ async function getOrganisateurById(id) {
     }
 }
 
-module.exports = {createOrganisateur,getAllOrganisateur, deleteOrganisateur, getOrganisateurById }
+async function getOrganisateurByMailAndPassword(email,password){
+    try {
+
+        const {rows} = await db.query('SELECT * FROM public."Organisateur" WHERE email_organisateur = $1 AND mot_de_passe_organisateur = $2;', [email,password])
+        return rows
+    }
+    catch (e) {
+        throw e
+    }
+}
+
+module.exports = {createOrganisateur,getAllOrganisateur, deleteOrganisateur, getOrganisateurById, getOrganisateurByMailAndPassword }
