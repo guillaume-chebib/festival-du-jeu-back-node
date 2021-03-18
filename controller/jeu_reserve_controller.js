@@ -27,5 +27,13 @@ async function getJeuReserveByIdReservation(params){
     }
 }
 
+async function getJeuReserveByIdZone(params){
+    try{
+        return await jeu.getJeuReserveByIdZone(params.id_zone)
+    }
+    catch (e) {
+        throw e
+    }
+}
 
-module.exports = {getAllJeuReserve, getJeuReserveByIdReservation, getJeuReserveByIdFestival}
+module.exports = {getAllJeuReserve, getJeuReserveByIdReservation, getJeuReserveByIdFestival, getJeuReserveByIdZone}
