@@ -65,7 +65,7 @@ router.get('/:id/jeu', async function(req, res, next) {
 
 });
 
-router.get('/:id/zone/jeu', async function(req, res, next) {
+router.get('/:id/zone', async function(req, res, next) {
     try {
         res_json = []
         const zones = await zone_controller.getZoneByIdFestival(req.params)
