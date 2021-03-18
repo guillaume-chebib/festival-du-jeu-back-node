@@ -9,18 +9,18 @@ async function getAllPriseContact(){
     }
 }
 
-async function getPriseContactByStatus(statut){
+async function getPriseContactByStatus(params){
     try{
-        return await prisecontact.getPriseContactByStatus(statut)
+        return await prisecontact.getPriseContactByStatus(params.id,params.statut)
     }
     catch (e) {
         throw e
     }
 }
 
-async function getPriseContactById(id_festival,id_societe){
+async function getPriseContactById(params){
     try{
-        return await prisecontact.getPriseContactById(id_festival,id_societe)
+        return await prisecontact.getPriseContactById(params.id,params.id_exposant)
     }
     catch (e) {
         throw e

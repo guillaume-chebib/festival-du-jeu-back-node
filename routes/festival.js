@@ -5,6 +5,9 @@ const festival_controller = require("../controller/festival_controller")
 const reservation_controller = require("../controller/reservation_controller")
 const jeu_reserve_controller = require("../controller/jeu_reserve_controller")
 const zone_controller = require("../controller/zone_controller")
+const contact_controller = require("../controller/contact_controller")
+const societe_controller = require("../controller/societe_controller")
+const prise_contact_controller = require("../controller/prisecontact_controller")
 
 router.get('/', async function(req, res, next) {
     try {
@@ -69,7 +72,6 @@ router.get('/:id/zone', async function(req, res, next) {
     try {
         res_json = []
         const zones = await zone_controller.getZoneByIdFestival(req.params)
-        console.log(zones)
         for (i = 0; i < zones.length; i++) {
             let jeuxZone = await jeu_reserve_controller.getJeuReserveByIdZone(zones[i])
             json_temp = {zone : zones[i], jeux : jeuxZone}
@@ -84,5 +86,78 @@ router.get('/:id/zone', async function(req, res, next) {
     }
 
 });
+
+router.get('/:id/exposant', async function(req, res, next) {
+    try {
+        res_json = []
+        const societes = await societe_controller.getAllSocieteActive(req.params)
+        console.log(societes)
+        for (i = 0; i < societes.length; i++) {
+            let contacts = await contact_controller.getContactByIdSociete(societes[i])
+            json_temp = {societe : societes[i], contacts : contacts}
+            res_json = res_json.concat(json_temp);
+        }
+
+        res.status(200).json({message:res_json})
+
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't load data" });
+    }
+
+});
+
+router.get('/:id/editeur', async function(req, res, next) {
+    try {
+        res_json = []
+        const editeurs = await societe_controller.getSocieteWithReservationByIdFestival(req.params)
+
+        res.status(200).json({message:editeurs})
+
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't load data" });
+    }
+
+});
+
+router.get('/:id_festival/editeur/:id_societe/jeu', async function(req, res, next) {
+    try {
+        res_json = []
+        const jeux = await jeu_reserve_controller.getJeuReserveByIdSocieteFestival(req.params)
+
+        res.status(200).json({message:jeux})
+
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't load data" });
+    }
+
+});
+
+router.get('/:id/exposant/:id_exposant/priseContact', async function(req, res, next) {
+    try {
+        const prisecontacts = await prise_contact_controller.getPriseContactById(req.params)
+        console.log(jeux)
+        res.status(200).json({ message: prisecontacts})
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't load data" });
+    }
+
+});
+
+router.get('/:id/exposant/priseContact/statut/:statut', async function(req, res, next) {
+    try {
+        const prisecontact = await prise_contact_controller.getPriseContactByStatus(req.params)
+        console.log(prisecontact)
+        res.status(200).json({ message: prisecontact})
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't load data" });
+    }
+
+});
+
 
 module.exports = router;

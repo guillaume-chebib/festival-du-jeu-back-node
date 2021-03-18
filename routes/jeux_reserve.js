@@ -1,26 +1,13 @@
 var express = require('express');
 var router = express.Router();
 
-const zone_controller = require("../controller/zone_controller")
-
-//======================= GET ========================//
-
-router.get('/', async function(req, res, next) {
-    try {
-        const zones = await zone_controller.getAllZone()
-        res.status(200).json({ message: zones})
-    }
-    catch (e) {
-        res.status(500).json({ message: "can't load data" });
-    }
-
-});
+const jeu_reserve_controller = require("../controller/jeu_reserve_controller")
 
 //======================= POST ========================//
 
 router.post('/', async function(req, res, next) {
     try {
-        await zone_controller.createZone(req.body)
+        await jeu_reserve_controller.createJeuReserve(req.body)
         res.status(200).json({message:"success"})
 
     }
@@ -34,7 +21,7 @@ router.post('/', async function(req, res, next) {
 
 router.put('/:id', async function(req, res, next) {
     try {
-        await zone_controller.updateZone(req.body)
+        await jeu_reserve_controller.updateJeuReserve(req.body)
         res.status(200).json({message:"success"})
 
     }
@@ -48,7 +35,7 @@ router.put('/:id', async function(req, res, next) {
 
 router.delete('/:id', async function(req, res, next) {
     try {
-        await zone_controller.deleteZone(req.params)
+        await jeu_reserve_controller.deleteJeuReserve(req.params)
         res.status(200).json({message:"success"})
 
     }
@@ -59,3 +46,4 @@ router.delete('/:id', async function(req, res, next) {
 });
 
 module.exports = router;
+

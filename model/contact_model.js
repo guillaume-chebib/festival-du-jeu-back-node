@@ -11,6 +11,18 @@ async function createContact(prenom,nom,email,telephone_portable,telephone_fixe,
     }
 }
 
+async function updateContact(id,prenom,nom,email,telephone_portable,telephone_fixe, fonction, est_principal,id_societe) {
+    try {
+        const res = await db.query('UPDATE public."Contact" SET ' +
+            'prenom_contact = $2,nom_contact = $3, email_contact = $4, telephone_portable_contact = $5, telephone_fixe_contact =$6,' +
+            'donction_contact =$7,est_principal_contact = $8, id_societe_contact = $9 ' +
+            'WHERE id_contact = $1;', [id,prenom,nom,email,telephone_portable,telephone_fixe, fonction, est_principal,id_societe])
+    }
+    catch (e) {
+        throw e
+    }
+}
+
 async function getAllContact() {
     try {
         const {rows} = await db.query('select * from public."Contact";', [])
@@ -52,4 +64,4 @@ async function getContactById(id) {
     }
 }
 
-module.exports = {createContact,getAllContact, getContactByIdSociete, deleteContact, getContactById}
+module.exports = {createContact,getAllContact, getContactByIdSociete, deleteContact, getContactById, updateContact}

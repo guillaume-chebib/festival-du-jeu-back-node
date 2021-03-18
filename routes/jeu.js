@@ -32,8 +32,7 @@ router.get('/:id', async function(req, res, next) {
 
 router.get('/editeur/:id', async function(req, res, next) {
     try {
-        const id = req.params.id
-        const jeux = await jeu_controller.getJeuByIdEditeur(id)
+        const jeux = await jeu_controller.getJeuByIdEditeur(req.params)
         console.log(jeux)
         res.status(200).json({ message: jeux})
     }
@@ -45,8 +44,7 @@ router.get('/editeur/:id', async function(req, res, next) {
 
 router.get('/type/:id', async function(req, res, next) {
     try {
-        const id = req.params.id
-        const jeux = await jeu_controller.getJeuByType(id)
+        const jeux = await jeu_controller.getJeuByIdType(req.params)
         console.log(jeux)
         res.status(200).json({ message: jeux})
     }
@@ -58,8 +56,7 @@ router.get('/type/:id', async function(req, res, next) {
 
 router.get('/type/:nom', async function(req, res, next) {
     try {
-        const nom = req.params.nom
-        const jeux = await jeu_controller.getJeuByTypeName(nom)
+        const jeux = await jeu_controller.getJeuByTypeName(req.params)
         console.log(jeux)
         res.status(200).json({ message: jeux})
     }
@@ -92,6 +89,20 @@ router.put('/:id', async function(req, res, next) {
     }
     catch (e) {
         res.status(500).json({ message: "can't modify data" });
+    }
+
+});
+
+//======================= DELETE ========================//
+
+router.delete('/:id', async function(req, res, next) {
+    try {
+        await jeu_controller.deleteJeu(req.params)
+        res.status(200).json({message:"success"})
+
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't delete data" });
     }
 
 });
