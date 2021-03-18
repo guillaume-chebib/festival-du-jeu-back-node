@@ -44,7 +44,8 @@ async function updateReservation(id, besoin_benevol, deplacement, apport_jeux, r
 async function createReservation(id, besoin_benevol, deplacement, apport_jeux, reduction, cr_envoye, date_envoi_facture, date_paye_facture) {
     try {
         const query = query('INSERT INTO public."Festival" (nom_festival,annee_festival) VALUES($1,$2);')
-        await db.query(query, [name,year])
+        const params = [id, besoin_benevol, deplacement, apport_jeux, reduction, cr_envoye, date_envoi_facture, date_paye_facture]
+        await db.query(query, params)
     }
     catch (e) {
         throw e
