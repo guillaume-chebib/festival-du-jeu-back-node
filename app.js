@@ -12,6 +12,9 @@ var organisateursRouter = require('./routes/organisateur')
 var espacesRouter = require('./routes/espace')
 var zonesRouter = require('./routes/zone')
 var reservationRouter = require('./routes/reservation')
+var loginRouter = require('./routes/login')
+var registerRouter = require('./routes/register')
+
 var app = express();
 
 app.use(logger('dev'));
@@ -31,6 +34,7 @@ app.use('/organisateur', organisateursRouter)
 app.use('/espace', espacesRouter)
 app.use('/zone', zonesRouter)
 app.use('/reservation', reservationRouter)
+app.use('/login',loginRouter)
 
 
 
