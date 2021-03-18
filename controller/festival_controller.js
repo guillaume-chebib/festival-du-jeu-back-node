@@ -17,6 +17,7 @@ async function createFestival(body){
         throw e
     }
 }
+
 async function updateFestival(body){
     try{
         await festival.updateFestival(body.id,body.annee,body.nom)
