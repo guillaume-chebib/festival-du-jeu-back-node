@@ -48,6 +48,8 @@ async function getJeuById(id){
 
 async function createJeu(body){
     try{
+        console.log("la")
+
         await jeu_model.createJeu(body.titre, body.min_joueur, body.max_joueur,
                                                     body.age_min, body.proto, body.id_type_jeu,
                                                     body.id_editeur,body.url

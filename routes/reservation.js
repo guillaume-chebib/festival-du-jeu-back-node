@@ -24,7 +24,7 @@ router.put('/:id', async function(req, res, next) {
         res.status(200).json({ message: "success"})
     }
     catch (e) {
-        res.status(500).json({ message: "can't load data" });
+        res.status(500).json({ message: "can't modify data" });
     }
 
 });
@@ -36,7 +36,7 @@ router.post('/', async function(req, res, next) {
         res.status(200).json({ message: "success"})
     }
     catch (e) {
-        res.status(500).json({ message: "can't load data" });
+        res.status(500).json({ message: "can't add data" });
     }
 
 });

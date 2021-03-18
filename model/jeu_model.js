@@ -3,9 +3,12 @@ const db = require('../db')
 
 async function createJeu(titre,min_joueur,max_joueur,age,proto, id_type_jeu, id_editeur, url_consignes_jeu) {
     try {
-        const query = 'INSERT INTO public."Jeu" (titre_jeu,min_joueur_jeu,max_joueur_jeu, age_min_jeu, proto_jeu,id_type_jeu_jeu,id_editeur_jeu) ' +
+
+
+        const query = 'INSERT INTO public."Jeu" (titre_jeu,min_joueur_jeu,max_joueur_jeu, age_min_jeu, proto_jeu,id_type_jeu_jeu,id_editeur_jeu,url_consignes_jeu) ' +
             'VALUES($1, $2, $3, $4, $5, $6, $7, $8);'
         const {rows} = await db.query(query, [titre,min_joueur,max_joueur,age,proto, id_type_jeu, id_editeur, url_consignes_jeu])
+        console.log("final")
         return rows
     }
     catch (e) {
