@@ -70,7 +70,6 @@ router.get('/type/:nom', async function(req, res, next) {
 router.post('/', async function(req, res, next) {
 
     try {
-        console.log("ici")
         await jeu_controller.createJeu(req.body)
 
         res.status(200).json({ message: "success"})
