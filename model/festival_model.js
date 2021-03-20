@@ -20,9 +20,10 @@ async function createFestival(year,name) {
     }
 }
 
-async function updateFestival(id,year,name) {
+async function updateFestival(id,year,name,est_courant) {
     try {
-        const res = await db.query('UPDATE public."Festival" SET nom_festival = $1, annee_festival =$2 WHERE id_festival = $3;', [name,year,id])
+        const res = await db.query('UPDATE public."Festival" SET nom_festival = $1, annee_festival =$2, est_courant_festival = $4 WHERE id_festival = $3;', [name,year,id,est_courant])
+        return res
     }
     catch (e) {
         throw e

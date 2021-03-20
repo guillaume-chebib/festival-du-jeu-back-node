@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-
 const festival_controller = require("../controller/festival_controller")
 const reservation_controller = require("../controller/reservation_controller")
 const jeu_reserve_controller = require("../controller/jeu_reserve_controller")
@@ -200,6 +199,18 @@ router.get('/:id/espace', async function(req, res, next) {
         const espace = await espace_controller.getEspaceByIdFestival(req.params)
         res.status(200).json({message:espace})
 
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't load data" });
+    }
+
+});
+
+router.put('/:id', async function(req, res, next) {
+    try {
+
+        const festival = await festival_controller.updateFestival(req.body)
+        res.status(200).json({ message: "ok"})
     }
     catch (e) {
         res.status(500).json({ message: "can't load data" });
