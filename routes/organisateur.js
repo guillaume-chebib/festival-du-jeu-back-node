@@ -21,7 +21,13 @@ router.post('/', async function(req, res, next) {
         res.status(200).json({ message: "succes"})
     }
     catch (e) {
-        res.status(500).json({ message: "impossible d'ajouter l'organisateur" });
+        console.log(e.code)
+        if(e.code === '23505'){
+            res.status(500).json({ message: "Adresse mail déjà existante, veuillez reesayer avec une adresse differente." });
+        }
+        else {
+            res.status(500).json({message: "Une erreur est survenue, veuillez reesayer plus tard."});
+        }
     }
 
 });
