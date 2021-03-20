@@ -1,9 +1,9 @@
 const db = require('../db')
 
 
-async function createZone(id_festival,nom) {
+async function createZone(nom, id_festival) {
     try {
-        const {rows} = await db.query('INSERT INTO public."Zone" (id_festival,nom_zone) VALUES($1, $2);', [id_festival,nom])
+        const {rows} = await db.query('INSERT INTO public."Zone" (id_festival_zone,nom_zone) VALUES($1, $2);', [id_festival,nom])
         return rows
     }
     catch (e) {
