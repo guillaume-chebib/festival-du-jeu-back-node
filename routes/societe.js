@@ -77,6 +77,17 @@ router.get('/editeur', async function(req, res, next) {
 
 });
 
+router.get('/:id/prise_contact', async function(req, res, next) {
+    try {
+        const prise_contact = await prise_contact_controller.getPriseContactByIdExposant(req.params)
+        res.status(200).json({ message: prise_contact})
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't load data" });
+    }
+
+});
+
 //======================= PUT ========================//
 
 router.put('/:id', async function(req, res, next) {

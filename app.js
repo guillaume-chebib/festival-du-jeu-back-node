@@ -18,6 +18,7 @@ var typeJeuRouter = require('./routes/type_jeu')
 var societeRouter = require('./routes/societe')
 var priseContactRouter = require('./routes/prise_contact')
 var jeuReserveRouter = require('./routes/jeu_reserve')
+var commentaireRouter = require('./routes/commentaire')
 
 var app = express();
 
@@ -43,6 +44,7 @@ app.use('/typeJeu',typeJeuRouter)
 app.use('/societe',societeRouter)
 app.use('/priseContact',priseContactRouter)
 app.use('/jeuReserve',jeuReserveRouter)
+app.use('/commentaire',commentaireRouter)
 
 
 

@@ -43,6 +43,14 @@ async function updateAllocationEspace(nb_table_allocation, m2_allocation, remise
         throw e
     }
 }
+async function deleteAllocationEspace(id, id_espace) {
+    try {
+        const {rows} = await db.query('DELETE FROM public."Allocation_Espace" WHERE id_reservation_allocation_espace = $1 and id_espace_allocation_espace = $2;', [id,id_espace])
+        return rows
+    }
+    catch (e) {
+        throw e
+    }
+}
 
-
-module.exports = {getAllocationsByIdReservation,createAllocationEspace, updateAllocationEspace}
+module.exports = {getAllocationsByIdReservation,createAllocationEspace, updateAllocationEspace,deleteAllocationEspace}

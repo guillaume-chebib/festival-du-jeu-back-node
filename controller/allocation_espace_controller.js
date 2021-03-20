@@ -34,4 +34,13 @@ async function updateAllocationEspace(body,params) {
     }
 }
 
-module.exports = {getAllocationsByIdReservation, createAllocationEspace, updateAllocationEspace}
+async function deleteAllocationEspace(params) {
+    try{
+        await allocation_espace.deleteAllocationEspace( params.id, params.id_espace)
+    }
+    catch (e) {
+        throw e
+    }
+}
+
+module.exports = {getAllocationsByIdReservation, createAllocationEspace, updateAllocationEspace,deleteAllocationEspace}

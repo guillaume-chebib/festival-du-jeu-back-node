@@ -20,7 +20,7 @@ async function createFestival(body){
 
 async function updateFestival(body){
     try{
-        await festival.updateFestival(body.id,body.annee,body.nom)
+        return await festival.updateFestival(body.id,body.annee_festival,body.nom_festival,body.est_courant_festival)
     }
     catch (e) {
         throw e
