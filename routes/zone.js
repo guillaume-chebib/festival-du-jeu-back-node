@@ -3,10 +3,11 @@ var router = express.Router();
 
 const zone_controller = require("../controller/zone_controller")
 
+//======================= GET ========================//
+
 router.get('/', async function(req, res, next) {
     try {
         const zones = await zone_controller.getAllZone()
-        console.log(zones)
         res.status(200).json({ message: zones})
     }
     catch (e) {
@@ -15,28 +16,44 @@ router.get('/', async function(req, res, next) {
 
 });
 
-router.get('/:id', async function(req, res, next) {
+//======================= POST ========================//
+
+router.post('/', async function(req, res, next) {
     try {
-        const id = req.params.id
-        const zone = await zone_controller.getZoneById(id)
-        console.log(zone)
-        res.status(200).json({ message: zone})
+        await zone_controller.createZone(req.body)
+        res.status(200).json({message:"success"})
+
     }
     catch (e) {
-        res.status(500).json({ message: "can't load data" });
+        res.status(500).json({ message: "can't modify data" });
     }
 
 });
 
-router.get('/festival/:id', async function(req, res, next) {
+//======================= PUT ========================//
+
+router.put('/:id', async function(req, res, next) {
     try {
-        const id = req.params.id
-        const zone = await zone_controller.getZoneByIdFestival(id)
-        console.log(zone)
-        res.status(200).json({ message: zone})
+        await zone_controller.updateZone(req.body)
+        res.status(200).json({message:"success"})
+
     }
     catch (e) {
-        res.status(500).json({ message: "can't load data" });
+        res.status(500).json({ message: "can't add data" });
+    }
+
+});
+
+//======================= DELETE ========================//
+
+router.delete('/:id', async function(req, res, next) {
+    try {
+        await zone_controller.deleteZone(req.params)
+        res.status(200).json({message:"success"})
+
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't delete data" });
     }
 
 });

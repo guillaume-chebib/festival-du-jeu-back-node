@@ -1,5 +1,32 @@
 const zone = require("../model/zone_model")
 
+async function createZone(body){
+    try{
+        return await zone.createZone(body.nom)
+    }
+    catch (e) {
+        throw e
+    }
+}
+
+async function updateZone(body){
+    try{
+        return await zone.updateZone(body.id,body.nom)
+    }
+    catch (e) {
+        throw e
+    }
+}
+
+async function deleteZone(params){
+    try{
+        return await zone.deleteZone(params.id)
+    }
+    catch (e) {
+        throw e
+    }
+}
+
 async function getAllZone(){
     try{
         return await zone.getAllZone()
@@ -27,4 +54,4 @@ async function getZoneById(params){
     }
 }
 
-module.exports = {getAllZone,getZoneByIdFestival,getZoneById}
+module.exports = {getAllZone,getZoneByIdFestival,getZoneById, updateZone, createZone, deleteZone}

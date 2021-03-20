@@ -9,37 +9,37 @@ async function getAllJeu(){
     }
 }
 
-async function getJeuByIdEditeur(id_editeur){
+async function getJeuByIdEditeur(params){
     try{
-        return await jeu_model.getJeuByIdEditeur(id_editeur)
+        return await jeu_model.getJeuByIdEditeur(params.id)
     }
     catch (e) {
         throw e
     }
 }
 
-async function getJeuByIdType(id_type){
+async function getJeuByIdType(params){
     try{
-        return await jeu_model.getJeuByIdType(id_type)
+        return await jeu_model.getJeuByIdType(params.id)
     }
     catch (e) {
         throw e
     }
 }
 
-async function getJeuByTypeName(nom){
+async function getJeuByTypeName(params){
     try{
-        return await jeu_model.getJeuByTypeName(nom)
+        return await jeu_model.getJeuByTypeName(params.nom)
     }
     catch (e) {
         throw e
     }
 }
 
-async function getJeuById(id){
+async function getJeuById(params){
 
     try{
-        return await jeu_model.getJeuById(id)
+        return await jeu_model.getJeuById(params.id)
     }
     catch (e) {
         throw e
@@ -48,8 +48,6 @@ async function getJeuById(id){
 
 async function createJeu(body){
     try{
-        console.log("la")
-
         await jeu_model.createJeu(body.titre, body.min_joueur, body.max_joueur,
                                                     body.age_min, body.proto, body.id_type_jeu,
                                                     body.id_editeur,body.url
@@ -60,9 +58,9 @@ async function createJeu(body){
     }
 }
 
-async function updateJeu(body){
+async function updateJeu(params,body){
     try{
-        await jeu_model.updateJeu(body.id,body.titre, body.min_joueur, body.max_joueur,
+        await jeu_model.updateJeu(params.id,body.titre, body.min_joueur, body.max_joueur,
             body.age_min, body.proto, body.id_type_jeu,
             body.id_editeur,body.url
         )
@@ -72,4 +70,13 @@ async function updateJeu(body){
     }
 }
 
-module.exports = {getAllJeu, getJeuByIdType, getJeuByIdEditeur,getJeuById, getJeuByTypeName,createJeu,updateJeu}
+async function deleteJeu(params){
+    try{
+        await jeu_model.deleteJeu(params.id)
+    }
+    catch (e) {
+        throw e
+    }
+}
+
+module.exports = {getAllJeu, getJeuByIdType, getJeuByIdEditeur,getJeuById, getJeuByTypeName,createJeu,updateJeu, deleteJeu}

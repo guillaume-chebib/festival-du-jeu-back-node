@@ -3,6 +3,8 @@ var router = express.Router();
 
 const jeu_controller = require("../controller/jeu_controller")
 
+//======================= GET ========================//
+
 router.get('/', async function(req, res, next) {
     try {
         const jeux = await jeu_controller.getAllJeu()
@@ -32,8 +34,7 @@ router.get('/:id', async function(req, res, next) {
 
 router.get('/editeur/:id', async function(req, res, next) {
     try {
-        const id = req.params.id
-        const jeux = await jeu_controller.getJeuByIdEditeur(id)
+        const jeux = await jeu_controller.getJeuByIdEditeur(req.params)
         console.log(jeux)
         res.status(200).json({ message: jeux})
     }
@@ -45,8 +46,7 @@ router.get('/editeur/:id', async function(req, res, next) {
 
 router.get('/type/:id', async function(req, res, next) {
     try {
-        const id = req.params.id
-        const jeux = await jeu_controller.getJeuByType(id)
+        const jeux = await jeu_controller.getJeuByIdType(req.params)
         console.log(jeux)
         res.status(200).json({ message: jeux})
     }
@@ -58,8 +58,7 @@ router.get('/type/:id', async function(req, res, next) {
 
 router.get('/type/:nom', async function(req, res, next) {
     try {
-        const nom = req.params.nom
-        const jeux = await jeu_controller.getJeuByTypeName(nom)
+        const jeux = await jeu_controller.getJeuByTypeName(req.params)
         console.log(jeux)
         res.status(200).json({ message: jeux})
     }
@@ -69,11 +68,11 @@ router.get('/type/:nom', async function(req, res, next) {
 
 });
 
+//======================= POST ========================//
 
 router.post('/', async function(req, res, next) {
 
     try {
-        console.log("ici")
         await jeu_controller.createJeu(req.body)
 
         res.status(200).json({ message: "success"})
@@ -84,14 +83,30 @@ router.post('/', async function(req, res, next) {
 
 });
 
+//======================= PUT ========================//
+
 router.put('/:id', async function(req, res, next) {
 
     try {
-        await jeu_controller.updateJeu(req.body)
+        await jeu_controller.updateJeu(req.params,req.body)
         res.status(200).json({ message: "success"})
     }
     catch (e) {
         res.status(500).json({ message: "can't modify data" });
+    }
+
+});
+
+//======================= DELETE ========================//
+
+router.delete('/:id', async function(req, res, next) {
+    try {
+        await jeu_controller.deleteJeu(req.params)
+        res.status(200).json({message:"success"})
+
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't delete data" });
     }
 
 });

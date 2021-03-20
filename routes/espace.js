@@ -28,17 +28,39 @@ router.get('/:id', async function(req, res, next) {
 
 });
 
-router.get('/festival/:id', async function(req, res, next) {
+router.post('/', async function(req, res, next) {
+
     try {
-        const id = req.params.id
-        const espace = await espace_controller.getEspaceByIdFestival(id)
-        console.log(espace)
-        res.status(200).json({ message: espace})
+        await espace_controller.createEspace(req.body,req.params)
+        res.status(200).json({ message: "success"})
     }
     catch (e) {
-        res.status(500).json({ message: "can't load data" });
+        res.status(500).json({ message: "can't add data" });
     }
 
 });
 
+router.put('/:id', async function(req, res, next) {
+
+    try {
+        await espace_controller.updateEspace(req.body,req.params)
+        res.status(200).json({ message: "success"})
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't modify data" });
+    }
+
+});
+
+router.delete('/:id', async function(req, res, next) {
+
+    try {
+        await espace_controller.deleteEspace(req.params)
+        res.status(200).json({ message: "success"})
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't delete data" });
+    }
+
+});
 module.exports = router;

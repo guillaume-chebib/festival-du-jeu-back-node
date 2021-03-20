@@ -38,7 +38,7 @@ async function updateReservation(body){
 async function createReservation(body){
     try{
         await reservation_model.createReservation(body.id,body.besoin_benevol,body.deplacement,
-            body.apport_jeux, bodu.reduction, body.cr_envoye,
+            body.apport_jeux, body.reduction, body.cr_envoye,
             body.date_envoi_facture, body.date_paye_facture
         )
     }
@@ -47,4 +47,13 @@ async function createReservation(body){
     }
 }
 
-module.exports = {getReservationById,getReservationsByIdFestival,updateReservation,createReservation}
+async function deleteReservation(params) {
+    try{
+        await reservation_model.deleteReservation( params.id)
+    }
+    catch (e) {
+        throw e
+    }
+}
+
+module.exports = {getReservationById,getReservationsByIdFestival,updateReservation,createReservation,deleteReservation}

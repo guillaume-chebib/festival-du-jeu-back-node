@@ -20,9 +20,9 @@ async function createPriseContact(id_festival, id_societe ,premier, deuxieme,tro
     }
 }
 
-async function updatePriseContact(id, id_festival, id_societe ,premier, deuxieme,troisieme,statut) {
+async function updatePriseContact(id_festival, id_societe ,premier, deuxieme,troisieme,statut) {
     try {
-        const res = await db.query('UPDATE public."Prise_Contact" SET id_festival_prise_contact = $1, id_societe_prise_contact = $2, premier_prise_contact =$3, deuxieme_prise_contact =$4, troisieme_prise_contact = $5, statut_prise_contact=$6  WHERE id_espace = $7;', [id_festival, id_societe ,premier, deuxieme,troisieme,statut,id])
+        const res = await db.query('UPDATE public."Prise_Contact" SET premier_prise_contact =$3, deuxieme_prise_contact =$4, troisieme_prise_contact = $5, statut_prise_contact=$6  WHERE id_festival_prise_contact = $1, id_societe_prise_contact = $2;', [id_festival, id_societe ,premier, deuxieme,troisieme,statut])
     }
     catch (e) {
         throw e

@@ -1,15 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
-const contact_controller = require("../controller/contact_controller")
+const type_jeu_controller = require("../controller/type_jeu_controller")
 
 //======================= GET ========================//
 
 router.get('/', async function(req, res, next) {
     try {
-        const contacts = await contact_controller.getAllContact()
-        console.log(contacts)
-        res.status(200).json({ message: contacts})
+        const types = await type_jeu_controller.getAllTypeJeu()
+        res.status(200).json({ message: types})
     }
     catch (e) {
         res.status(500).json({ message: "can't load data" });
@@ -19,20 +18,8 @@ router.get('/', async function(req, res, next) {
 
 router.get('/:id', async function(req, res, next) {
     try {
-        const contact = await contact_controller.getContactById(req.params)
-        console.log(contact)
-        res.status(200).json({ message: contact})
-    }
-    catch (e) {
-        res.status(500).json({ message: "can't load data" });
-    }
-
-});
-
-router.get('/societe/:id_societe', async function(req, res, next) {
-    try {
-        const contact = await contact_controller.getContactByIdSociete(req.params)
-        res.status(200).json({ message: contact})
+        const type = await type_jeu_controller.getTypeJeuById(req.params)
+        res.status(200).json({ message: type})
     }
     catch (e) {
         res.status(500).json({ message: "can't load data" });
@@ -44,7 +31,7 @@ router.get('/societe/:id_societe', async function(req, res, next) {
 
 router.post('/', async function(req, res, next) {
     try {
-        await contact_controller.createContact(req.body)
+        await type_jeu_controller.createTypeJeu(req.body)
         res.status(200).json({message:"success"})
 
     }
@@ -58,7 +45,7 @@ router.post('/', async function(req, res, next) {
 
 router.put('/:id', async function(req, res, next) {
     try {
-        await contact_controller.updateContact(req.params,req.body)
+        await type_jeu_controller.updateTypeJeu(req.params,req.body)
         res.status(200).json({message:"success"})
 
     }
@@ -72,7 +59,7 @@ router.put('/:id', async function(req, res, next) {
 
 router.delete('/:id', async function(req, res, next) {
     try {
-        await contact_controller.deleteContact(req.params)
+        await type_jeu_controller.deleteTypeJeu(req.params)
         res.status(200).json({message:"success"})
 
     }
