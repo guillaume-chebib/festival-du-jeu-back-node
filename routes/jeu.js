@@ -3,6 +3,8 @@ var router = express.Router();
 
 const jeu_controller = require("../controller/jeu_controller")
 
+//======================= GET ========================//
+
 router.get('/', async function(req, res, next) {
     try {
         const jeux = await jeu_controller.getAllJeu()
@@ -66,6 +68,7 @@ router.get('/type/:nom', async function(req, res, next) {
 
 });
 
+//======================= POST ========================//
 
 router.post('/', async function(req, res, next) {
 
@@ -80,6 +83,8 @@ router.post('/', async function(req, res, next) {
     }
 
 });
+
+//======================= PUT ========================//
 
 router.put('/:id', async function(req, res, next) {
 

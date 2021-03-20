@@ -18,9 +18,9 @@ async function getSocieteWithReservationByIdFestival(params){
     }
 }
 
-async function getAllSocieteActive(){
+async function getAllExposantActif(){
     try{
-        return await societe_model.getAllSocieteActive()
+        return await societe_model.getAllExposantActif()
     }
     catch (e) {
         throw e
@@ -30,6 +30,33 @@ async function getAllSocieteActive(){
 async function getSocieteByVille(params){
     try{
         return await societe_model.getSocieteByVille(params.ville)
+    }
+    catch (e) {
+        throw e
+    }
+}
+
+async function getAllEditeur(){
+    try{
+        return await societe_model.getSocieteByVille()
+    }
+    catch (e) {
+        throw e
+    }
+}
+
+async function getAllExposant(){
+    try{
+        return await societe_model.getSocieteByVille()
+    }
+    catch (e) {
+        throw e
+    }
+}
+
+async function getAllEditeurExposant(){
+    try{
+        return await societe_model.getSocieteByVille()
     }
     catch (e) {
         throw e
@@ -77,4 +104,4 @@ async function deleteSociete(params){
     }
 }
 
-module.exports = {getAllSociete,getSocieteById, getAllSocieteActive, getSocieteByVille,createSociete,updateSociete, getSocieteWithReservationByIdFestival, deleteSociete}
+module.exports = {getAllEditeur, getAllEditeurExposant, getAllExposant, getAllSociete,getSocieteById, getAllExposantActif, getSocieteByVille,createSociete,updateSociete, getSocieteWithReservationByIdFestival, deleteSociete}

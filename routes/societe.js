@@ -4,6 +4,8 @@ var router = express.Router();
 const jeu_controller = require("../controller/jeu_controller")
 const societe_controller = require("../controller/societe_controller")
 
+//======================= GET ========================//
+
 router.get('/', async function(req, res, next) {
     try {
         const societes = await societe_controller.getAllSociete()
@@ -41,6 +43,41 @@ router.get('/:id/jeu', async function(req, res, next) {
 
 });
 
+router.get('/exposant', async function(req, res, next) {
+    try {
+        const societe = await societe_controller.getAllExposant()
+        res.status(200).json({ message: societe})
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't load data" });
+    }
+
+});
+
+router.get('/editeurExposant', async function(req, res, next) {
+    try {
+        const societe = await societe_controller.getAllEditeurExposant()
+        res.status(200).json({ message: societe})
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't load data" });
+    }
+
+});
+
+router.get('/editeur', async function(req, res, next) {
+    try {
+        const societe = await societe_controller.getAllEditeur()
+        res.status(200).json({ message: societe})
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't load data" });
+    }
+
+});
+
+//======================= PUT ========================//
+
 router.put('/:id', async function(req, res, next) {
 
     try {
@@ -52,6 +89,8 @@ router.put('/:id', async function(req, res, next) {
     }
 
 });
+
+//======================= POST ========================//
 
 router.post('/', async function(req, res, next) {
 
@@ -69,7 +108,7 @@ router.post('/', async function(req, res, next) {
 
 router.delete('/:id', async function(req, res, next) {
     try {
-        await societe_controller.dele(req.params)
+        await societe_controller.deleteSociete(req.params)
         res.status(200).json({message:"success"})
 
     }

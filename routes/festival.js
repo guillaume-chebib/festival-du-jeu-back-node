@@ -7,7 +7,7 @@ const jeu_reserve_controller = require("../controller/jeu_reserve_controller")
 const zone_controller = require("../controller/zone_controller")
 const contact_controller = require("../controller/contact_controller")
 const societe_controller = require("../controller/societe_controller")
-const prise_contact_controller = require("../controller/prisecontact_controller")
+const prise_contact_controller = require("../controller/prise_contact_controller")
 
 router.get('/', async function(req, res, next) {
     try {
@@ -90,7 +90,7 @@ router.get('/:id/zone', async function(req, res, next) {
 router.get('/:id/exposant', async function(req, res, next) {
     try {
         res_json = []
-        const societes = await societe_controller.getAllSocieteActive(req.params)
+        const societes = await societe_controller.getAllExposantActif(req.params)
         console.log(societes)
         for (i = 0; i < societes.length; i++) {
             let contacts = await contact_controller.getContactByIdSociete(societes[i])
@@ -107,7 +107,7 @@ router.get('/:id/exposant', async function(req, res, next) {
 
 });
 
-router.get('/:id/editeur', async function(req, res, next) {
+router.get('/:id/reservation/exposant', async function(req, res, next) {
     try {
         res_json = []
         const editeurs = await societe_controller.getSocieteWithReservationByIdFestival(req.params)
