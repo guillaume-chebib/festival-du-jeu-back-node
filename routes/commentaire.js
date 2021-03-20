@@ -1,13 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-const prise_contact_controller = require("../controller/prise_contact_controller")
-
-//======================= POST ========================//
+var controller = require("../controller/commentaire_controller")
 
 router.post('/', async function(req, res, next) {
     try {
-        await prise_contact_controller.createPriseContact(req.body)
+        await controller.createCommentaireById(req.body)
         res.status(200).json({message:"success"})
 
     }
@@ -18,6 +16,4 @@ router.post('/', async function(req, res, next) {
 });
 
 
-
 module.exports = router;
-
