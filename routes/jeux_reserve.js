@@ -17,20 +17,6 @@ router.post('/', async function(req, res, next) {
 
 });
 
-//======================= PUT ========================//
-
-router.put('/:id', async function(req, res, next) {
-    try {
-        await jeu_reserve_controller.updateJeuReserve(req.body)
-        res.status(200).json({message:"success"})
-
-    }
-    catch (e) {
-        res.status(500).json({ message: "can't add data" });
-    }
-
-});
-
 //======================= DELETE ========================//
 
 router.delete('/:id', async function(req, res, next) {

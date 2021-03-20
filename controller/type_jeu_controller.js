@@ -27,9 +27,9 @@ async function createTypeJeu(body){
     }
 }
 
-async function updateTypeJeu(body){
+async function updateTypeJeu(params,body){
     try{
-        return await typejeu.updateTypeJeu(body.id,body.nom)
+        return await typejeu.updateTypeJeu(params.id,body.nom)
     }
     catch (e) {
         throw e
