@@ -47,7 +47,7 @@ router.post('/', async function(req, res, next) {
 /**
  * Partie allocation espace
  */
-router.post('/:id/espace_allocation/', async function(req, res, next) {
+router.post('/:id/allocation_espace/', async function(req, res, next) {
 
     try {
         await allocation_espace_controller.createAllocationEspace(req.body,req.params)
@@ -59,5 +59,16 @@ router.post('/:id/espace_allocation/', async function(req, res, next) {
 
 });
 
+router.put('/:id/allocation_espace/:id_espace', async function(req, res, next) {
+
+    try {
+        await allocation_espace_controller.updateAllocationEspace(req.body,req.params)
+        res.status(200).json({ message: "success"})
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't add data" });
+    }
+
+});
 
 module.exports = router;
