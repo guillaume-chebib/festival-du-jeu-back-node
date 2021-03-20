@@ -66,9 +66,20 @@ router.put('/:id/allocation_espace/:id_espace', async function(req, res, next) {
         res.status(200).json({ message: "success"})
     }
     catch (e) {
-        res.status(500).json({ message: "can't add data" });
+        res.status(500).json({ message: "can't modify data" });
     }
 
 });
 
+router.delete('/:id/allocation_espace/:id_espace', async function(req, res, next) {
+
+    try {
+        await allocation_espace_controller.deleteAllocationEspace(req.params)
+        res.status(200).json({ message: "success"})
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't delete data" });
+    }
+
+});
 module.exports = router;
