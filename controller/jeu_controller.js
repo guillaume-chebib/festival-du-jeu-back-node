@@ -66,6 +66,7 @@ async function updateJeu(params,body){
         )
     }
     catch (e) {
+        console.log(e)
         throw e
     }
 }

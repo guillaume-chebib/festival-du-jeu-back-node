@@ -12,7 +12,7 @@ router.post('/', async function(req, res, next) {
 
     }
     catch (e) {
-        res.status(500).json({ message: "can't modify data" });
+        res.status(500).json({ message: "can't add data" });
     }
 
 });

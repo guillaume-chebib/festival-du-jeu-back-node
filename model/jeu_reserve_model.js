@@ -1,13 +1,13 @@
 const db = require('../db')
 
 
-async function createJeuReserve(id_jeu,id_reservation, quantite, nb_table, tombola, dotation, place_plan, recu, a_renvoyer, est_renvoyer, montant_renvoi, id_zone) {
+async function createJeuReserve(id_jeu,id_reservation, quantite, nb_table, tombola, dotation, place_plan, recu, a_renvoyer, est_renvoye, montant_renvoi, id_zone) {
     try {
         const {rows} = await db.query('INSERT INTO public."Jeu_Reserve" ' +
             '(id_jeu_jeu_reserve,id_reservation_jeu_reserve, quantite_jeu_reserve, nb_table_jeu_reserve, ' +
             'tombola_jeu_reserve, dotation_jeu_reserve, place_plan_jeu_reserve, recu_jeu_reserve, ' +
-            'a_renvoyer_jeu_reserve, est_renvoyer_jeu_reserve, montant_renvoi_jeu_reserve, id_zone_jeu_reserve) ' +
-            'VALUES($1, $2, $3, $4, $5, $6, $7, $8);', [id_jeu,id_reservation, quantite, nb_table, tombola, dotation, place_plan, recu, a_renvoyer, est_renvoyer, montant_renvoi, id_zone])
+            'a_renvoyer_jeu_reserve, est_renvoye_jeu_reserve, montant_renvoi_jeu_reserve, id_zone_jeu_reserve) ' +
+            'VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);', [id_jeu,id_reservation, quantite, nb_table, tombola, dotation, place_plan, recu, a_renvoyer, est_renvoye, montant_renvoi, id_zone])
         return rows
     }
     catch (e) {
@@ -15,14 +15,14 @@ async function createJeuReserve(id_jeu,id_reservation, quantite, nb_table, tombo
     }
 }
 
-async function updateJeuReserve(id_jeu,id_reservation, quantite, nb_table, tombola, dotation, place_plan, recu, a_renvoyer, est_renvoyer, montant_renvoi, id_zone) {
+async function updateJeuReserve(id_jeu,id_reservation, quantite, nb_table, tombola, dotation, place_plan, recu, a_renvoyer, est_renvoye, montant_renvoi, id_zone) {
     try {
         const {rows} = await db.query('UPDATE public."Jeu_Reserve" SET ' +
             'quantite_jeu_reserve = $3, nb_table_jeu_reserve = $4, ' +
             'tombola_jeu_reserve = $5, dotation_jeu_reserve = $6, place_plan_jeu_reserve = $7, recu_jeu_reserve = $8, ' +
-            'a_renvoyer_jeu_reserve = $9, est_renvoyer_jeu_reserve = $10, montant_renvoi_jeu_reserve = $11, id_zone_jeu_reserve = $12 ' +
+            'a_renvoyer_jeu_reserve = $9, est_renvoye_jeu_reserve = $10, montant_renvoi_jeu_reserve = $11, id_zone_jeu_reserve = $12 ' +
             'WHERE id_jeu_jeu_reserve = $1 AND id_reservation_jeu_reserve = $2;'
-            ,[id_jeu,id_reservation, quantite, nb_table, tombola, dotation, place_plan, recu, a_renvoyer, est_renvoyer, montant_renvoi, id_zone])
+            ,[id_jeu,id_reservation, quantite, nb_table, tombola, dotation, place_plan, recu, a_renvoyer, est_renvoye, montant_renvoi, id_zone])
         return rows
     }
     catch (e) {

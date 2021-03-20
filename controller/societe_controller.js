@@ -79,15 +79,15 @@ async function createSociete(body){
             body.rue, body.est_editeur, body.est_inactif,body.ville, body.code_postal )
     }
     catch (e) {
+        console.log(e)
         throw e
     }
 }
 
-async function updateSociete(body){
+async function updateSociete(params,body){
     try{
-        await societe_model.updateSociete(body.id,body.nom, body.est_exposant, body.numero_rue,
-            body.rue, body.est_editeur, body.est_inactif,body.ville, body.code_postal ,
-            body.id_editeur,body.url
+        await societe_model.updateSociete(params.id,body.nom, body.est_exposant, body.numero_rue,
+            body.rue, body.est_editeur, body.est_inactif, body.ville, body.code_postal
         )
     }
     catch (e) {
