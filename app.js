@@ -15,6 +15,8 @@ var reservationRouter = require('./routes/reservation')
 var loginRouter = require('./routes/login')
 var registerRouter = require('./routes/register')
 var commentaireRouter = require('./routes/commentaire')
+var prise_contactRouter = require('./routes/prise_contact')
+var societeRouter = require('./routes/societe')
 
 var app = express();
 
@@ -37,6 +39,8 @@ app.use('/zone', zonesRouter)
 app.use('/reservation', reservationRouter)
 app.use('/login',loginRouter)
 app.use('/commentaire',commentaireRouter)
+app.use('/prise_contact',prise_contactRouter)
+app.use('/societe',societeRouter)
 
 
 

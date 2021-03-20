@@ -11,18 +11,40 @@ async function getAllPriseContact() {
     }
 }
 
-async function createPriseContact(id_festival, id_societe ,premier, deuxieme,troisieme,statut) {
+async function getPriseContactByIdFestival(id_festival) {
     try {
-        const res = await db.query('INSERT INTO public."Prise_Contact" (id_festival_prise_contact, id_societe_prise_contact ,premier_prise_contact, deuxieme_prise_contact,troisieme_prise_contact,statut_prise_contact) VALUES($1,$2, $3, $4, $5, $6);', [id_festival, id_societe ,premier, deuxieme,troisieme,statut])
+        const {rows} = await db.query('select * from public."Prise_Contact" WHERE id_festival_prise_contact = $1;', [id_festival])
+        return rows
+    }
+    catch (e) {
+        throw e
+    }
+}
+async function getPriseContactByIdExposant(id_exposant) {
+    try {
+        const {rows} = await db.query('select * from public."Prise_Contact" where id_societe_prise_contact = $1;', [id_exposant])
+        return rows
     }
     catch (e) {
         throw e
     }
 }
 
-async function updatePriseContact(id_festival, id_societe ,premier, deuxieme,troisieme,statut) {
+async function createPriseContact(id_festival, id_societe ,premier, deuxieme,troisieme,statut) {
     try {
-        const res = await db.query('UPDATE public."Prise_Contact" SET premier_prise_contact =$3, deuxieme_prise_contact =$4, troisieme_prise_contact = $5, statut_prise_contact=$6  WHERE id_festival_prise_contact = $1, id_societe_prise_contact = $2;', [id_festival, id_societe ,premier, deuxieme,troisieme,statut])
+        const query = 'INSERT INTO public."Prise_Contact" (id_festival_prise_contact, id_societe_prise_contact ,premier_prise_contact, deuxieme_prise_contact,troisieme_prise_contact,statut_prise_contact) VALUES($1,$2, $3, $4, $5, $6);'
+        const res = await db.query(query, [id_festival, id_societe ,premier, deuxieme,troisieme,statut])
+
+    }
+    catch (e) {
+        throw e
+    }
+}
+
+async function updatePriseContact(id_festival, id_exposant ,premier, deuxieme,troisieme,statut) {
+    try {
+        const query = 'UPDATE public."Prise_Contact" SET premier_prise_contact =$3, deuxieme_prise_contact = $4, troisieme_prise_contact = $5, statut_prise_contact= $6  WHERE id_festival_prise_contact = $1 and id_societe_prise_contact = $2;'
+        await db.query(query, [id_festival, id_exposant ,premier, deuxieme,troisieme,statut])
     }
     catch (e) {
         throw e
@@ -31,7 +53,12 @@ async function updatePriseContact(id_festival, id_societe ,premier, deuxieme,tro
 
 async function getPriseContactById(id_festival, id_societe) {
     try {
-        const {rows} = await db.query('SELECT * FROM public."Prise_Contact" WHERE id_festival_prise_contact = $1 AND id_societe_prise_contact = $2;', [id_festival, id_societe])
+        console.log(id_festival, id_societe)
+
+        const query = 'SELECT * FROM public."Prise_Contact" WHERE id_festival_prise_contact = $1 AND id_societe_prise_contact = $2;'
+        const {rows} = await db.query(query, [id_festival, id_societe])
+        console.log(rows)
+
         return rows
     }
     catch (e) {
@@ -49,4 +76,4 @@ async function getPriseContactByStatus(statut) {
     }
 }
 
-module.exports = {getAllPriseContact,createPriseContact, updatePriseContact, getPriseContactById, getPriseContactByStatus}
+module.exports = {getAllPriseContact,createPriseContact, updatePriseContact, getPriseContactById, getPriseContactByStatus,getPriseContactByIdFestival,getPriseContactByIdExposant}

@@ -156,6 +156,18 @@ router.get('/:id_festival/editeur/:id_societe/jeu', async function(req, res, nex
     }
 
 });
+router.get('/:id_festival/prise_contact', async function(req, res, next) {
+    try {
+
+        const jeux = await prise_contact_controller.getPriseContactByIdFestival(req.params)
+        res.status(200).json({message:jeux})
+
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't load data" });
+    }
+
+});
 
 
 /**

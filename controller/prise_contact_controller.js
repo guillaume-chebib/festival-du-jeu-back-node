@@ -1,3 +1,5 @@
+
+
 const prisecontact = require("../model/prise_contact_model")
 
 async function getAllPriseContact(){
@@ -20,7 +22,24 @@ async function getPriseContactByStatus(params){
 
 async function getPriseContactById(params){
     try{
-        return await prisecontact.getPriseContactById(params.id,params.id_exposant)
+        return await prisecontact.getPriseContactById(params.id_festival,params.id_exposant)
+    }
+    catch (e) {
+        throw e
+    }
+}
+async function getPriseContactByIdFestival(params) {
+    try{
+        return await prisecontact.getPriseContactByIdFestival(params.id_festival)
+    }
+    catch (e) {
+        throw e
+    }
+}
+
+async function getPriseContactByIdExposant(params) {
+    try{
+        return await prisecontact.getPriseContactByIdExposant(params.id)
     }
     catch (e) {
         throw e
@@ -38,11 +57,12 @@ async function createPriseContact(body){
 
 async function updatePriseContact(params,body){
     try{
-        return await prisecontact.updatePriseContact(params.id_festival, params.id ,body.premier, body.deuxieme,body.troisieme,body.statut)
+        return await prisecontact.updatePriseContact(params.id_festival, params.id_exposant ,body.premier, body.deuxieme,body.troisieme,body.statut)
     }
     catch (e) {
         throw e
     }
 }
 
-module.exports = {getAllPriseContact,getPriseContactByStatus,getPriseContactById,updatePriseContact,createPriseContact}
+module.exports = {getAllPriseContact,getPriseContactByStatus,getPriseContactById,updatePriseContact,
+    createPriseContact, getPriseContactByIdFestival,getPriseContactByIdExposant}
