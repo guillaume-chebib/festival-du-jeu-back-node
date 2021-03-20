@@ -93,7 +93,7 @@ router.get('/:id/prise_contact', async function(req, res, next) {
 router.put('/:id', async function(req, res, next) {
 
     try {
-        await societe_controller.updateSociete(req.body)
+        await societe_controller.updateSociete(req.params,req.body)
         res.status(200).json({ message: "success"})
     }
     catch (e) {
@@ -109,7 +109,7 @@ router.put('/:id/priseContact/festival/:id_festival', async function(req, res, n
 
     }
     catch (e) {
-        res.status(500).json({ message: "can't add data" });
+        res.status(500).json({ message: "can't modify data" });
     }
 
 });

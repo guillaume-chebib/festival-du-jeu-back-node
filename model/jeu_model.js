@@ -20,7 +20,7 @@ async function updateJeu(id, titre,min_joueur,max_joueur,age,proto, id_type_jeu,
         const query = 'UPDATE public."Jeu" SET titre_jeu = $2, min_joueur_jeu = $3,' +
             ' max_joueur_jeu = $4, age_min_jeu = $5, proto_jeu = $6, id_type_jeu_jeu = $7,' +
             ' id_editeur_jeu = $8, url_consignes_jeu = $9 WHERE id_jeu = $1;'
-        const params = [titre,min_joueur,max_joueur,age,proto, id_type_jeu, id_editeur, url_consignes_jeu]
+        const params = [id,titre,min_joueur,max_joueur,age,proto, id_type_jeu, id_editeur, url_consignes_jeu]
         await db.query(query, params, id)
     }
     catch (e) {
