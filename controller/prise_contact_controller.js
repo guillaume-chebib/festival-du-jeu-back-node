@@ -36,9 +36,9 @@ async function createPriseContact(body){
     }
 }
 
-async function updatePriseContact(body){
+async function updatePriseContact(params,body){
     try{
-        return await prisecontact.updatePriseContact(body.id_festival, body.id_societe ,body.premier, body.deuxieme,body.troisieme,body.statut)
+        return await prisecontact.updatePriseContact(params.id_festival, params.id ,body.premier, body.deuxieme,body.troisieme,body.statut)
     }
     catch (e) {
         throw e

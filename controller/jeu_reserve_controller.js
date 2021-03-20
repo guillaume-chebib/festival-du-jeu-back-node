@@ -11,9 +11,9 @@ async function createJeuReserve(body){
     }
 }
 
-async function updateJeuReserve(body){
+async function updateJeuReserve(params,body){
     try{
-        return await jeu.updateJeuReserve(body.id_jeu,body.id_reservation, body.quantite, body.nb_table, body.tombola,
+        return await jeu.updateJeuReserve(params.id_jeu,params.id, body.quantite, body.nb_table, body.tombola,
                                             body.dotation, body.place_plan, body.recu, body.a_renvoyer,
                                             body.est_renvoyer, body.montant_renvoi, body.id_zone)
     }

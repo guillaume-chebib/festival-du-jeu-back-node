@@ -58,9 +58,9 @@ async function createJeu(body){
     }
 }
 
-async function updateJeu(body){
+async function updateJeu(params,body){
     try{
-        await jeu_model.updateJeu(body.id,body.titre, body.min_joueur, body.max_joueur,
+        await jeu_model.updateJeu(params.id,body.titre, body.min_joueur, body.max_joueur,
             body.age_min, body.proto, body.id_type_jeu,
             body.id_editeur,body.url
         )

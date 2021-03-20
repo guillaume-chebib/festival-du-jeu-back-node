@@ -3,6 +3,7 @@ var router = express.Router();
 
 const jeu_controller = require("../controller/jeu_controller")
 const societe_controller = require("../controller/societe_controller")
+const prise_contact_controller = require("../controller/prise_contact_controller")
 
 //======================= GET ========================//
 
@@ -86,6 +87,18 @@ router.put('/:id', async function(req, res, next) {
     }
     catch (e) {
         res.status(500).json({ message: "can't modify data" });
+    }
+
+});
+
+router.put('/:id/priseContact/festival/:id_festival', async function(req, res, next) {
+    try {
+        await prise_contact_controller.updatePriseContact(req.params,req.body)
+        res.status(200).json({message:"success"})
+
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't add data" });
     }
 
 });
