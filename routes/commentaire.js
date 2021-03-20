@@ -15,5 +15,28 @@ router.post('/', async function(req, res, next) {
 
 });
 
+router.put('/:id', async function(req, res, next) {
+    try {
+        await controller.updateCommentaireById(req.body, req.params)
+        res.status(200).json({message:"success"})
+
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't modify data" });
+    }
+
+});
+
+router.delete('/:id', async function(req, res, next) {
+
+    try {
+        await controller.deleteCommentaire(req.params)
+        res.status(200).json({ message: "success"})
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't delete data" });
+    }
+
+});
 
 module.exports = router;

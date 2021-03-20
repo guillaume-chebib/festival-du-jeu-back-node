@@ -25,4 +25,26 @@ async function getCommentairesByIdReservation(id) {
     }
 }
 
-module.exports = {getCommentairesByIdReservation, createCommentaireById}
+async function updateCommentaireById(id_reservation, text_commentaire, id) {
+    try {
+        const query = 'UPDATE public."Commentaire" SET id_reservation_commentaire = $1, text_commentaire = $2 WHERE id_commentaire = $3;'
+        const params = [id_reservation, text_commentaire, id]
+
+        await db.query(query, params)
+    }
+    catch (e) {
+        throw e
+    }
+}
+
+async function deleteCommentaire(id) {
+    try {
+        const {rows} = await db.query('DELETE FROM public."Commentaire" WHERE id_commentaire = $1 ', [id])
+        return rows
+    }
+    catch (e) {
+        throw e
+    }
+}
+
+module.exports = {getCommentairesByIdReservation, createCommentaireById, updateCommentaireById,deleteCommentaire}

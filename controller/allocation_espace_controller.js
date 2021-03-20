@@ -36,7 +36,6 @@ async function updateAllocationEspace(body,params) {
 
 async function deleteAllocationEspace(params) {
     try{
-        console.log("delete")
         await allocation_espace.deleteAllocationEspace( params.id, params.id_espace)
     }
     catch (e) {
