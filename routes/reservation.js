@@ -44,8 +44,22 @@ router.post('/', async function(req, res, next) {
 
 });
 
+router.delete('/:id', async function(req, res, next) {
+
+    try {
+        await reservation_controller.deleteReservation(req.params)
+        res.status(200).json({ message: "success"})
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't delete data" });
+    }
+
+});
+
 /**
+ * =========================================================================================================================
  * Partie allocation espace
+ * =========================================================================================================================
  */
 router.post('/:id/allocation_espace/', async function(req, res, next) {
 

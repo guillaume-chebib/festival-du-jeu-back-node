@@ -43,7 +43,7 @@ async function updateReservation(id, besoin_benevol, deplacement, apport_jeux, r
 
 async function createReservation(id, besoin_benevol, deplacement, apport_jeux, reduction, cr_envoye, date_envoi_facture, date_paye_facture) {
     try {
-        const query = query('INSERT INTO public."Festival" (nom_festival,annee_festival) VALUES($1,$2);')
+        const query = query('INSERT INTO public."Reservation" (besoin_benevol_reservation,annee_festival) VALUES($1,$2);')
         const params = [id, besoin_benevol, deplacement, apport_jeux, reduction, cr_envoye, date_envoi_facture, date_paye_facture]
         await db.query(query, params)
     }
@@ -52,4 +52,14 @@ async function createReservation(id, besoin_benevol, deplacement, apport_jeux, r
     }
 }
 
-module.exports = {getReservationById, getReservationByIdFestival,updateReservation,createReservation}
+async function deleteReservation(id) {
+    try {
+        const {rows} = await db.query('DELETE FROM public."Reservation" WHERE id_reservation = $1;', [id])
+        return rows
+    }
+    catch (e) {
+        throw e
+    }
+}
+
+module.exports = {getReservationById, getReservationByIdFestival,updateReservation,createReservation,deleteReservation}
