@@ -38,7 +38,7 @@ async function getSocieteByVille(params){
 
 async function getAllEditeur(){
     try{
-        return await societe_model.getSocieteByVille()
+        return await societe_model.getAllEditeur()
     }
     catch (e) {
         throw e
@@ -47,7 +47,7 @@ async function getAllEditeur(){
 
 async function getAllExposant(){
     try{
-        return await societe_model.getSocieteByVille()
+        return await societe_model.getAllExposant()
     }
     catch (e) {
         throw e
@@ -56,7 +56,7 @@ async function getAllExposant(){
 
 async function getAllEditeurExposant(){
     try{
-        return await societe_model.getSocieteByVille()
+        return await societe_model.getAllEditeurExposant()
     }
     catch (e) {
         throw e

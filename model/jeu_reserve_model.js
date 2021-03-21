@@ -82,6 +82,7 @@ async function getJeuReserveByIdZone(id_zone) {
     try {
         const {rows} = await db.query('SELECT * ' +
             'FROM public."Jeu_Reserve" r JOIN public."Jeu" j ON r.id_jeu_jeu_reserve = j.id_jeu ' +
+            'JOIN public."Societe" s ON s.id_societe = j.id_editeur_jeu ' +
             'JOIN public."Type_Jeu" tj ON tj.id_type_jeu = j.id_type_jeu_jeu ' +
             'JOIN public."Zone" z ON z.id_zone = r.id_zone_jeu_reserve ' +
             'WHERE id_zone_jeu_reserve = $1;', [id_zone])

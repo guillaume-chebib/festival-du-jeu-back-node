@@ -19,6 +19,39 @@ router.get('/', async function(req, res, next) {
 
 });
 
+router.get('/exposant', async function(req, res, next) {
+    try {
+        const societes = await societe_controller.getAllExposant()
+        res.status(200).json({ message: societes})
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't load data" });
+    }
+
+});
+
+router.get('/editeur', async function(req, res, next) {
+    try {
+        const societes = await societe_controller.getAllEditeur()
+        res.status(200).json({ message: societes})
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't load data" });
+    }
+
+});
+
+router.get('/editeurExposant', async function(req, res, next) {
+    try {
+        const societes = await societe_controller.getAllEditeurExposant()
+        res.status(200).json({ message: societes})
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't load data" });
+    }
+
+});
+
 router.get('/:id', async function(req, res, next) {
     try {
         const societe = await societe_controller.getSocieteById(req.params)
@@ -37,39 +70,6 @@ router.get('/:id/jeu', async function(req, res, next) {
         const jeux = await jeu_controller.getJeuByIdEditeur(req.params)
         console.log(jeux)
         res.status(200).json({ message: jeux})
-    }
-    catch (e) {
-        res.status(500).json({ message: "can't load data" });
-    }
-
-});
-
-router.get('/exposant', async function(req, res, next) {
-    try {
-        const societe = await societe_controller.getAllExposant()
-        res.status(200).json({ message: societe})
-    }
-    catch (e) {
-        res.status(500).json({ message: "can't load data" });
-    }
-
-});
-
-router.get('/editeurExposant', async function(req, res, next) {
-    try {
-        const societe = await societe_controller.getAllEditeurExposant()
-        res.status(200).json({ message: societe})
-    }
-    catch (e) {
-        res.status(500).json({ message: "can't load data" });
-    }
-
-});
-
-router.get('/editeur', async function(req, res, next) {
-    try {
-        const societe = await societe_controller.getAllEditeur()
-        res.status(200).json({ message: societe})
     }
     catch (e) {
         res.status(500).json({ message: "can't load data" });
