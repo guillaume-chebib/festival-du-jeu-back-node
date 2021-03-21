@@ -50,7 +50,7 @@ async function createJeu(body){
     try{
         await jeu_model.createJeu(body.titre, body.min_joueur, body.max_joueur,
                                                     body.age_min, body.proto, body.id_type_jeu,
-                                                    body.id_editeur,body.url
+                                                    body.id_editeur,body.url, body.duree
         )
     }
     catch (e) {
@@ -62,7 +62,7 @@ async function updateJeu(params,body){
     try{
         await jeu_model.updateJeu(params.id,body.titre, body.min_joueur, body.max_joueur,
             body.age_min, body.proto, body.id_type_jeu,
-            body.id_editeur,body.url
+            body.id_editeur,body.url, body.duree
         )
     }
     catch (e) {
