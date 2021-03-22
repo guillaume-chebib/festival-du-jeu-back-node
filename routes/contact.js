@@ -8,7 +8,7 @@ const contact_controller = require("../controller/contact_controller")
 router.get('/', async function(req, res, next) {
     try {
         const contacts = await contact_controller.getAllContact()
-        console.log(contacts)
+
         res.status(200).json({ message: contacts})
     }
     catch (e) {
@@ -20,7 +20,7 @@ router.get('/', async function(req, res, next) {
 router.get('/:id', async function(req, res, next) {
     try {
         const contact = await contact_controller.getContactById(req.params)
-        console.log(contact)
+
         res.status(200).json({ message: contact})
     }
     catch (e) {

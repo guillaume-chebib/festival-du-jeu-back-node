@@ -112,7 +112,7 @@ router.get('/:id/exposant', async function(req, res, next) {
     try {
         res_json = []
         const societes = await societe_controller.getAllExposantActif(req.params)
-        console.log(societes)
+
         for (i = 0; i < societes.length; i++) {
             let contacts = await contact_controller.getContactByIdSociete(societes[i])
             json_temp = {societe : societes[i], contacts : contacts}
@@ -178,7 +178,7 @@ router.get('/:id_festival/prise_contact', async function(req, res, next) {
 router.get('/:id/exposant/:id_exposant/priseContact', async function(req, res, next) {
     try {
         const prisecontacts = await prise_contact_controller.getPriseContactById(req.params)
-        console.log(jeux)
+
         res.status(200).json({ message: prisecontacts})
     }
     catch (e) {
@@ -190,7 +190,7 @@ router.get('/:id/exposant/:id_exposant/priseContact', async function(req, res, n
 router.get('/:id/exposant/priseContact/statut/:statut', async function(req, res, next) {
     try {
         const prisecontact = await prise_contact_controller.getPriseContactByStatus(req.params)
-        console.log(prisecontact)
+
         res.status(200).json({ message: prisecontact})
     }
     catch (e) {

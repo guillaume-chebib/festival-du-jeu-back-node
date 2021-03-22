@@ -53,11 +53,11 @@ async function updatePriseContact(id_festival, id_exposant ,premier, deuxieme,tr
 
 async function getPriseContactById(id_festival, id_societe) {
     try {
-        console.log(id_festival, id_societe)
+
 
         const query = 'SELECT * FROM public."Prise_Contact" WHERE id_festival_prise_contact = $1 AND id_societe_prise_contact = $2;'
         const {rows} = await db.query(query, [id_festival, id_societe])
-        console.log(rows)
+
 
         return rows
     }

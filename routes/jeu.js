@@ -8,7 +8,7 @@ const jeu_controller = require("../controller/jeu_controller")
 router.get('/', async function(req, res, next) {
     try {
         const jeux = await jeu_controller.getAllJeu()
-        console.log(jeux)
+
         res.status(200).json({ message: jeux})
     }
     catch (e) {
@@ -23,7 +23,7 @@ router.get('/:id', async function(req, res, next) {
 
         const jeu = await jeu_controller.getJeuById(id)
 
-        console.log(jeu)
+
         res.status(200).json({ message: jeu})
     }
     catch (e) {
@@ -35,7 +35,7 @@ router.get('/:id', async function(req, res, next) {
 router.get('/editeur/:id', async function(req, res, next) {
     try {
         const jeux = await jeu_controller.getJeuByIdEditeur(req.params)
-        console.log(jeux)
+
         res.status(200).json({ message: jeux})
     }
     catch (e) {
@@ -47,7 +47,6 @@ router.get('/editeur/:id', async function(req, res, next) {
 router.get('/type/:id', async function(req, res, next) {
     try {
         const jeux = await jeu_controller.getJeuByIdType(req.params)
-        console.log(jeux)
         res.status(200).json({ message: jeux})
     }
     catch (e) {
@@ -59,7 +58,6 @@ router.get('/type/:id', async function(req, res, next) {
 router.get('/type/:nom', async function(req, res, next) {
     try {
         const jeux = await jeu_controller.getJeuByTypeName(req.params)
-        console.log(jeux)
         res.status(200).json({ message: jeux})
     }
     catch (e) {
