@@ -20,7 +20,7 @@ async function getTypeJeuById(params){
 
 async function createTypeJeu(body){
     try{
-        return await typejeu.createTypeJeu(body.nom)
+        return await typejeu.createTypeJeu(body.nom_type_jeu)
     }
     catch (e) {
         throw e
@@ -29,7 +29,7 @@ async function createTypeJeu(body){
 
 async function updateTypeJeu(params,body){
     try{
-        return await typejeu.updateTypeJeu(params.id,body.nom)
+        return await typejeu.updateTypeJeu(params.id,body.nom_type_jeu)
     }
     catch (e) {
         throw e

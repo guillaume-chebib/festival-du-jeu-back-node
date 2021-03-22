@@ -75,8 +75,8 @@ async function getSocieteById(params){
 
 async function createSociete(body){
     try{
-        await societe_model.createSociete(body.nom, body.est_exposant, body.numero_rue,
-            body.rue, body.est_editeur, body.est_inactif,body.ville, body.code_postal )
+        await societe_model.createSociete(body.nom_societe, body.est_exposant_societe, body.numero_rue_editeur,
+            body.rue_editeur, body.est_editeur_societe, body.est_inactif_societe,body.ville_editeur, body.code_postal_editeur )
     }
     catch (e) {
         console.log(e)

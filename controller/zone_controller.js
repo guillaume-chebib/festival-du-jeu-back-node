@@ -2,7 +2,7 @@ const zone = require("../model/zone_model")
 
 async function createZone(body){
     try{
-        return await zone.createZone(body.nom, body.id_festival)
+        return await zone.createZone(body.nom_zone, body.id_festival)
     }
     catch (e) {
         throw e
@@ -11,7 +11,7 @@ async function createZone(body){
 
 async function updateZone(params, body){
     try{
-        return await zone.updateZone(params.id,body.nom)
+        return await zone.updateZone(params.id,body.nom_zone)
     }
     catch (e) {
         throw e
