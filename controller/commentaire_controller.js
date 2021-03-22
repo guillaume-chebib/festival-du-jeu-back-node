@@ -11,7 +11,7 @@ async function getCommentairesByIdReservation(params) {
 
 async function createCommentaireById(body) {
     try{
-        return await commentaire_model.createCommentaireById(body.id_reservation,body.text_commentaire)
+        return await commentaire_model.createCommentaireById(body.id_reservation_commentaire,body.text_commentaire)
     }
     catch (e) {
         throw e
@@ -20,7 +20,7 @@ async function createCommentaireById(body) {
 
 async function updateCommentaireById(body, params) {
     try{
-        return await commentaire_model.updateCommentaireById(body.id_reservation,body.text_commentaire, params.id)
+        return await commentaire_model.updateCommentaireById(body.id_reservation_commentaire,body.text_commentaire, params.id)
     }
     catch (e) {
         throw e

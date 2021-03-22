@@ -29,7 +29,7 @@ async function getEspaceById(id){
 
 async function createEspace(body) {
     try{
-        await espace_model.createEspace(body.prix_table,body.prix_surface, body.nb_table,body.id_festival)
+        await espace_model.createEspace(body.prix_table_espace,body.prix_surface_espace, body.nb_table_espace,body.id_festival_espace)
     }
     catch (e) {
         throw e
@@ -38,7 +38,7 @@ async function createEspace(body) {
 
 async function updateEspace(body,params) {
     try {
-        await espace_model.updateEspace(body.prix_table,body.prix_surface,body.nb_table,params.id)
+        await espace_model.updateEspace(body.prix_table_espace,body.prix_surface_espace,body.nb_table_espace,params.id)
         res.status(200).json({ message: "success"})
     }
     catch (e) {

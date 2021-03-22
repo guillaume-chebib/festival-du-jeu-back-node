@@ -3,7 +3,8 @@ const contact = require("../model/contact_model")
 
 async function createContact(body){
     try{
-        await contact.createContact(body.prenom,body.nom,body.email,body.telephone_portable,body.telephone_fixe, body.fonction, body.est_principal,body.id_societe)
+        await contact.createContact(body.prenom_contact,body.nom_contact,body.email_contact,body.telephone_portable_contact,
+            body.telephone_fixe_contact, body.fonction_contact, body.est_principal_contact,body.id_societe_contact)
     }
     catch (e) {
         throw e
@@ -12,7 +13,8 @@ async function createContact(body){
 
 async function updateContact(params,body){
     try{
-        await contact.updateContact(params.id,body.prenom,body.nom,body.email,body.telephone_portable,body.telephone_fixe, body.fonction, body.est_principal,body.id_societe)
+        await contact.updateContact(params.id,body.prenom_contact,body.nom_contact,body.email_contact,
+            body.telephone_portable_contact,body.telephone_fixe_contact, body.fonction_contact, body.est_principal_contact,body.id_societe_contact)
     }
     catch (e) {
         console.log(e)

@@ -30,7 +30,7 @@ async function createAllocationEspace(nb_table_allocation, m2_allocation, remise
     }
 }
 
-async function updateAllocationEspace(nb_table_allocation, m2_allocation, remise_allocation, id_reservation, id_espace) {
+async function updateAllocationEspace(nb_table_allocation, m2_allocation, remise_allocation, id_espace, id_reservation) {
     try {
         const query = 'UPDATE public."Allocation_Espace" ' +
             'SET nb_table_allocation_espace = $1, m2_allocation_espace = $2, remise_allocation_espace = $3 ' +

@@ -20,8 +20,8 @@ async function getOrganisateurById(id){
 
 async function createOrganisateur(body){
     try{
-        const hashPassword = await bcrypt.hash(body.mot_de_passe, 10);
-        return await organisateur.createOrganisateur(body.prenom,body.nom,body.email,false,hashPassword)
+        const hashPassword = await bcrypt.hash(body.mot_de_passe_organisateur, 10);
+        return await organisateur.createOrganisateur(body.prenom_organisateur,body.nom_organisateur,body.email_organisateur,false,hashPassword)
 
     }
     catch (e) {

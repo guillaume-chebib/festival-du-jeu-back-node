@@ -48,9 +48,9 @@ async function getJeuById(params){
 
 async function createJeu(body){
     try{
-        await jeu_model.createJeu(body.titre, body.min_joueur, body.max_joueur,
-                                                    body.age_min, body.proto, body.id_type_jeu,
-                                                    body.id_editeur,body.url, body.duree
+        await jeu_model.createJeu(body.titre_jeu, body.min_joueur_jeu, body.max_joueur_jeu,
+                                                    body.age_min_jeu, body.proto_jeu, body.id_type_jeu_jeu,
+                                                    body.id_editeur_jeu,body.url_consignes_jeu, body.duree_jeu
         )
     }
     catch (e) {
@@ -60,13 +60,12 @@ async function createJeu(body){
 
 async function updateJeu(params,body){
     try{
-        await jeu_model.updateJeu(params.id,body.titre, body.min_joueur, body.max_joueur,
-            body.age_min, body.proto, body.id_type_jeu,
-            body.id_editeur,body.url, body.duree
+        await jeu_model.updateJeu(params.id,body.titre_jeu, body.min_joueur_jeu, body.max_joueur_jeu,
+            body.age_min_jeu, body.proto_jeu, body.id_type_jeu_jeu,
+            body.id_editeur_jeu,body.url_consignes_jeu, body.duree_jeu
         )
     }
     catch (e) {
-        console.log(e)
         throw e
     }
 }

@@ -2,9 +2,10 @@ const jeu = require("../model/jeu_reserve_model")
 
 async function createJeuReserve(body){
     try{
-        return await jeu.createJeuReserve(body.id_jeu,body.id_reservation, body.quantite, body.nb_table, body.tombola,
-                                            body.dotation, body.place_plan, body.recu, body.a_renvoyer,
-                                            body.est_renvoye, body.montant_renvoi, body.id_zone)
+        return await jeu.createJeuReserve(body.id_jeu_jeu_reserve,body.id_reservation_jeu_reserve, body.quantit_jeu_reservee,
+                                            body.nb_table_jeu_reserve, body.tombola_jeu_reserve,body.dotation_jeu_reserve,
+                                            body.place_plan_jeu_reserve, body.recu_jeu_reserve, body.a_renvoyer_jeu_reserve,
+                                            body.est_renvoye_jeu_reserve, body.montant_renvoi_jeu_reserve, body.id_zone_jeu_reserve)
     }
     catch (e) {
         console.log(e)
@@ -14,9 +15,9 @@ async function createJeuReserve(body){
 
 async function updateJeuReserve(params,body){
     try{
-        return await jeu.updateJeuReserve(params.id_jeu,params.id, body.quantite, body.nb_table, body.tombola,
-                                            body.dotation, body.place_plan, body.recu, body.a_renvoyer,
-                                            body.est_renvoye, body.montant_renvoi, body.id_zone)
+        return await jeu.updateJeuReserve(params.id_jeu,params.id, body.quantite_jeu_reserve, body.nb_table_jeu_reserve, body.tombola_jeu_reserve,
+                                            body.dotation_jeu_reserve, body.place_plan_jeu_reserve, body.recu_jeu_reserve, body.a_renvoyer_jeu_reserve,
+                                            body.est_renvoye_jeu_reserve, body.montant_renvoi_jeu_reserve, body.id_zone_jeu_reserve)
     }
     catch (e) {
         console.log(e)

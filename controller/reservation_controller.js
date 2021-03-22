@@ -25,8 +25,8 @@ async function getReservationsByIdFestival(params) {
 
 async function updateReservation(body){
     try{
-        await reservation_model.updateReservation(body.id,body.besoin_benevol,body.deplacement,
-                                                   body.apport_jeux, bodu.reduction, body.cr_envoye,
+        await reservation_model.updateReservation(body.id_reservation,body.besoin_benevol_reservation,body.deplacement_reservation,
+                                                   body.apport_jeux_reservation, body.reduction_reservation, body.cr_envoye_reservation,
                                                     body.date_envoi_facture, body.date_paye_facture
         )
     }
@@ -37,8 +37,8 @@ async function updateReservation(body){
 
 async function createReservation(body){
     try{
-        await reservation_model.createReservation(body.id,body.besoin_benevol,body.deplacement,
-            body.apport_jeux, body.reduction, body.cr_envoye,
+        await reservation_model.createReservation(body.id_reservation,body.besoin_benevol_reservation,body.deplacement_reservation,
+            body.apport_jeux_reservation, body.reduction_reservation, body.cr_envoye_reservation,
             body.date_envoi_facture, body.date_paye_facture
         )
     }

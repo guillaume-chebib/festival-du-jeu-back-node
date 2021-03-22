@@ -11,7 +11,7 @@ async function getAllFestival(){
 
 async function createFestival(body){
     try{
-        await festival.createFestival(body.annee,body.nom)
+        await festival.createFestival(body.annee_festival,body.nom_festival)
     }
     catch (e) {
         throw e

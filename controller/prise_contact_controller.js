@@ -48,7 +48,9 @@ async function getPriseContactByIdExposant(params) {
 
 async function createPriseContact(body){
     try{
-        return await prisecontact.createPriseContact(body.id_festival, body.id_exposant ,body.premier, body.deuxieme,body.troisieme,body.statut)
+        return await prisecontact.createPriseContact(body.id_festival_prise_contact, body.id_exposant_prise_contact ,
+                                                    body.premier_prise_contact, body.deuxieme_prise_contact,
+                                                    body.troisieme_prise_contact,body.statut_prise_contact)
     }
     catch (e) {
         throw e
@@ -57,7 +59,9 @@ async function createPriseContact(body){
 
 async function updatePriseContact(params,body){
     try{
-        return await prisecontact.updatePriseContact(params.id_festival, params.id_exposant ,body.premier, body.deuxieme,body.troisieme,body.statut)
+        return await prisecontact.updatePriseContact(params.id_festival, params.id_exposant ,body.premier_prise_contact,
+                                                    body.deuxieme_prise_contact,body.troisieme_prise_contact,body.statut_prise_contact
+                                                    )
     }
     catch (e) {
         console.log(e)

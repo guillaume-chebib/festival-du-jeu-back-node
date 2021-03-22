@@ -30,7 +30,7 @@ async function getReservationByIdFestival(id_festival) {
 
 async function updateReservation(id, besoin_benevol, deplacement, apport_jeux, reduction, cr_envoye, date_envoi_facture, date_paye_facture) {
     try {
-        const query = 'UPDATE public."Reservation" SET besoin_benevol_reservation = $2, deplacement_reservation = $3,' +
+        const query = 'UPDATE public."Reservation" SET besoin_benevole_reservation = $2, deplacement_reservation = $3,' +
             ' apport_jeux_reservation = $4, reduction_reservation = $5, reduction_reservation = $6,' +
             ' cr_envoye_reservation = $7, date_envoi_facture = $8, date_paye_facture = $9 WHERE id_reservation = $1;'
         const params = [id, besoin_benevol, deplacement, apport_jeux, reduction, cr_envoye, date_envoi_facture, date_paye_facture]
@@ -41,10 +41,11 @@ async function updateReservation(id, besoin_benevol, deplacement, apport_jeux, r
     }
 }
 
-async function createReservation(id, besoin_benevol, deplacement, apport_jeux, reduction, cr_envoye, date_envoi_facture, date_paye_facture) {
+async function createReservation( besoin_benevol, deplacement, apport_jeux, reduction, cr_envoye, date_envoi_facture, date_paye_facture) {
     try {
-        const query = query('INSERT INTO public."Reservation" (besoin_benevol_reservation,annee_festival) VALUES($1,$2);')
-        const params = [id, besoin_benevol, deplacement, apport_jeux, reduction, cr_envoye, date_envoi_facture, date_paye_facture]
+        const query = query('INSERT INTO public."Reservation" (besoin_benevole_reservation,deplacement_reservation, apport_jeux_reservation, reduction_reservation, cr_envoye_reservation, date_envoi_facture, date_paye_facture)' +
+            ' VALUES($1,$2,3, $4, $5, $6, $7);')
+        const params = [besoin_benevol, deplacement, apport_jeux, reduction, cr_envoye, date_envoi_facture, date_paye_facture]
         await db.query(query, params)
     }
     catch (e) {
