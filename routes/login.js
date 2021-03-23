@@ -8,7 +8,7 @@ router.post('/', async function(req, res, next) {
         res.status(200).json(reponse)
     }
     catch (e) {
-        res.status(200).json({ message: "Une erreur est survenue" });
+        res.status(401).json({ message: "Une erreur est survenue" });
     }
 
 });

@@ -19,6 +19,7 @@ var societeRouter = require('./routes/societe')
 var priseContactRouter = require('./routes/prise_contact')
 var jeuReserveRouter = require('./routes/jeu_reserve')
 var commentaireRouter = require('./routes/commentaire')
+var auth = require("./middleware/auth")
 
 var app = express();
 
@@ -31,20 +32,20 @@ app.use(cors())
 
 
 app.use('/home', indexRouter);
-app.use('/users', usersRouter);
-app.use('/festival', festivalsRouter)
-app.use('/contact', contactsRouter)
-app.use('/jeu', jeuxRouter)
-app.use('/organisateur', organisateursRouter)
-app.use('/espace', espacesRouter)
-app.use('/zone', zonesRouter)
-app.use('/reservation', reservationRouter)
+app.use('/users', auth, usersRouter);
+app.use('/festival', auth,festivalsRouter)
+app.use('/contact', auth, contactsRouter)
+app.use('/jeu',auth, jeuxRouter)
+app.use('/organisateur',auth, organisateursRouter)
+app.use('/espace', auth, espacesRouter)
+app.use('/zone', auth, zonesRouter)
+app.use('/reservation',auth, reservationRouter)
 app.use('/login',loginRouter)
-app.use('/typeJeu',typeJeuRouter)
-app.use('/societe',societeRouter)
-app.use('/priseContact',priseContactRouter)
-app.use('/jeuReserve',jeuReserveRouter)
-app.use('/commentaire',commentaireRouter)
+app.use('/typeJeu',auth,typeJeuRouter)
+app.use('/societe',auth,societeRouter)
+app.use('/priseContact',auth,priseContactRouter)
+app.use('/jeuReserve',auth,jeuReserveRouter)
+app.use('/commentaire',auth,commentaireRouter)
 
 
 

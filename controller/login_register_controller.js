@@ -9,7 +9,7 @@ async function login(body){
         const password = body.password
         const users = await model.getOrganisateurByMail(mail)
         if(users.length < 1) {
-            return {message:"Mauvais identifiants"}
+            throw new Error("Mauvais identifiants")
         }
         else{
 
@@ -20,17 +20,17 @@ async function login(body){
                     superuser: users[0].est_admin_organisateur,
                     id: users[0].id_organisateur
                 }, process.env.JWTKEY, {
-                    expiresIn: 60
+                    expiresIn: 3600 //1h
                 });
                 return {message: "ok", token: token}
             }
             else{
-                return {message:"Mauvais identifiants"}
+                throw new Error("Mauvais identifiants")
             }
         }
     }
     catch (e) {
-        return {message:"Une erreur est survenue"}
+        throw e
     }
 }
 
