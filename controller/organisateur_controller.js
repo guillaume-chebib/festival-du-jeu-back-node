@@ -46,4 +46,15 @@ async function updateOrganisateur(id,body){
         throw e
     }
 }
-module.exports = {getAllOrganisateur,getOrganisateurById,createOrganisateur,updateOrganisateur}
+
+async function deleteOrganisateur(id){
+    try{
+
+        return await organisateur.deleteOrganisateur(id)
+
+    }
+    catch (e) {
+        throw e
+    }
+}
+module.exports = {getAllOrganisateur,getOrganisateurById,createOrganisateur,updateOrganisateur,deleteOrganisateur}

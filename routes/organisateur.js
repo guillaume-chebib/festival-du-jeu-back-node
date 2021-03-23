@@ -44,6 +44,19 @@ router.put('/:id', async function(req, res, next) {
 
 });
 
+router.delete('/:id', async function(req, res, next) {
+    try {
+        const rep = await organisateur_controller.deleteOrganisateur(req.params.id)
+        res.status(200).json({ message: "succes"})
+    }
+    catch (e) {
+        console.log(e.code)
+        res.status(500).json({message: "Une erreur est survenue, veuillez reesayer plus tard."});
+
+    }
+
+});
+
 router.get('/profil/:id', async function(req, res, next) {
     try {
         const id = req.params.id
