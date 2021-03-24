@@ -76,4 +76,13 @@ async function getPriseContactByStatus(statut) {
     }
 }
 
-module.exports = {getAllPriseContact,createPriseContact, updatePriseContact, getPriseContactById, getPriseContactByStatus,getPriseContactByIdFestival,getPriseContactByIdExposant}
+async function getStatusPriseContact() {
+    try {
+        return await db.query('SELECT unnest(enum_range(NULL::statut_prise_contact)) ;', [])
+    }
+    catch (e) {
+        throw e
+    }
+}
+
+module.exports = {getStatusPriseContact,getAllPriseContact,createPriseContact, updatePriseContact, getPriseContactById, getPriseContactByStatus,getPriseContactByIdFestival,getPriseContactByIdExposant}

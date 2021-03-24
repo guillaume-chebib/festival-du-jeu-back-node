@@ -70,7 +70,15 @@ async function updatePriseContact(params,body){
     }
 }
 
+async function getStatusPriseContact(){
+    try{
+        return await prisecontact.getStatusPriseContact()
+    }
+    catch (e) {
+        throw e
+    }
+}
 
 
 module.exports = {getAllPriseContact,getPriseContactByStatus,getPriseContactById,updatePriseContact,
-    createPriseContact, getPriseContactByIdFestival,getPriseContactByIdExposant}
+    createPriseContact, getPriseContactByIdFestival,getPriseContactByIdExposant,getStatusPriseContact}
