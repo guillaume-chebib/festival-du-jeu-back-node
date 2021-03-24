@@ -21,6 +21,18 @@ router.get('/', async function(req, res, next) {
 
 });
 
+router.get('/courant', async function(req, res, next) {
+    try {
+        const festival = await festival_controller.getFestivalCourant()
+        res.status(200).json({ message: festival})
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't load data" });
+    }
+
+});
+
+
 router.post('/', async function(req, res, next) {
     try {
         await festival_controller.createFestival(req.body)

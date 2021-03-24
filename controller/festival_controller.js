@@ -9,6 +9,15 @@ async function getAllFestival(){
     }
 }
 
+async function getFestivalCourant(){
+    try{
+        return await festival.getFestivalCourant()
+    }
+    catch (e) {
+        throw e
+    }
+}
+
 async function createFestival(body){
     try{
         await festival.createFestival(body.annee_festival,body.nom_festival)
@@ -37,4 +46,4 @@ async function getFestivalById(params){
 }
 
 
-module.exports = {getAllFestival,createFestival,updateFestival,getFestivalById}
+module.exports = {getAllFestival,createFestival,updateFestival,getFestivalById,getFestivalCourant}
