@@ -23,7 +23,9 @@ async function getFestivalCourant() {
 
 async function createFestival(year,name) {
     try {
-        const res = await db.query('INSERT INTO public."Festival" (nom_festival,annee_festival) VALUES($1,$2);', [name,year])
+        const res = await db.query('INSERT INTO public."Festival" (nom_festival,annee_festival) VALUES($1,$2)  RETURNING id_festival;', [name,year])
+        return res.rows[0].id_festival
+
     }
     catch (e) {
         throw e

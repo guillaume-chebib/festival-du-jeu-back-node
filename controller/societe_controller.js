@@ -70,7 +70,14 @@ async function getAllEditeurExposant(){
         throw e
     }
 }
-
+async function getAllEditeurNonInactif(){
+    try{
+        return await societe_model.getAllEditeurNonInactif()
+    }
+    catch (e) {
+        throw e
+    }
+}
 async function getSocieteById(params){
 
     try{
@@ -112,4 +119,4 @@ async function deleteSociete(params){
     }
 }
 
-module.exports = {getAllEditeurs,getAllEditeurSeulement, getAllEditeurExposant, getAllExposantSeulement, getAllSociete,getSocieteById, getAllExposantActif, getSocieteByVille,createSociete,updateSociete, getSocieteWithReservationByIdFestival, deleteSociete}
+module.exports = {getAllEditeurNonInactif,getAllEditeurs,getAllEditeurSeulement, getAllEditeurExposant, getAllExposantSeulement, getAllSociete,getSocieteById, getAllExposantActif, getSocieteByVille,createSociete,updateSociete, getSocieteWithReservationByIdFestival, deleteSociete}

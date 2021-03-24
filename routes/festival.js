@@ -125,13 +125,27 @@ router.get('/:id/exposant', async function(req, res, next) {
         res_json = []
         const societes = await societe_controller.getAllExposantActif(req.params)
 
-        for (i = 0; i < societes.length; i++) {
-            let contacts = await contact_controller.getContactByIdSociete(societes[i])
-            json_temp = {societe : societes[i], contacts : contacts}
-            res_json = res_json.concat(json_temp);
-        }
+        // for (i = 0; i < societes.length; i++) {
+        //     let contacts = await contact_controller.getContactByIdSociete(societes[i])
+        //     json_temp = {societe : societes[i], contacts : contacts}
+        //     res_json = res_json.concat(json_temp);
+        // }
 
-        res.status(200).json({message:res_json})
+        res.status(200).json({message:societes})
+
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't load data" });
+    }
+
+});
+
+router.get('/:id/exposant', async function(req, res, next) {
+    try {
+        res_json = []
+        const societes = await societe_controller.getAllExposantActif(req.params)
+
+        res.status(200).json({message:societes})
 
     }
     catch (e) {

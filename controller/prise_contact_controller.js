@@ -48,6 +48,7 @@ async function getPriseContactByIdExposant(params) {
 
 async function createPriseContact(body){
     try{
+        console.log(body)
         return await prisecontact.createPriseContact(body.id_festival_prise_contact, body.id_exposant_prise_contact ,
                                                     body.premier_prise_contact, body.deuxieme_prise_contact,
                                                     body.troisieme_prise_contact,body.statut_prise_contact)
@@ -68,6 +69,8 @@ async function updatePriseContact(params,body){
         throw e
     }
 }
+
+
 
 module.exports = {getAllPriseContact,getPriseContactByStatus,getPriseContactById,updatePriseContact,
     createPriseContact, getPriseContactByIdFestival,getPriseContactByIdExposant}

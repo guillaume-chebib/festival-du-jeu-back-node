@@ -1,4 +1,7 @@
 const festival = require("../model/festival_model")
+const prise_contact_controller = require("../controller/prise_contact_controller")
+const societe_controller = require("../controller/societe_controller")
+
 
 async function getAllFestival(){
     try{
@@ -20,11 +23,23 @@ async function getFestivalCourant(){
 
 async function createFestival(body){
     try{
-        await festival.createFestival(body.annee_festival,body.nom_festival)
+        const id = await festival.createFestival(body.annee_festival,body.nom_festival)
+
+        initilisationPriseContact(id)
+
+
     }
     catch (e) {
         throw e
     }
+}
+
+async function initilisationPriseContact(id){
+    const societes = await societe_controller.getAllExposantActif()
+
+    societes.forEach(async (s) =>
+        await prise_contact_controller.createPriseContact({id_festival_prise_contact : id,id_exposant_prise_contact : s.id_societe,statut_prise_contact : 'Pas encore contacté'})
+    )
 }
 
 async function updateFestival(body){
