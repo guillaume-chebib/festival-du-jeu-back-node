@@ -11,6 +11,16 @@ async function getAllFestival() {
     }
 }
 
+async function getFestivalCourant() {
+    try {
+        const {rows} = await db.query('select * from public."Festival" where est_courant_festival = true;', [])
+        return rows
+    }
+    catch (e) {
+        throw e
+    }
+}
+
 async function createFestival(year,name) {
     try {
         const res = await db.query('INSERT INTO public."Festival" (nom_festival,annee_festival) VALUES($1,$2);', [name,year])
@@ -40,4 +50,4 @@ async function getFestivalById(id) {
     }
 }
 
-module.exports = {getAllFestival,createFestival, updateFestival, getFestivalById}
+module.exports = {getAllFestival,createFestival, updateFestival, getFestivalById,getFestivalCourant}
