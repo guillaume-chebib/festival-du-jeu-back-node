@@ -29,17 +29,6 @@ router.get('/:id', async function(req, res, next) {
 
 });
 
-router.get('/societe/:id_societe', async function(req, res, next) {
-    try {
-        const contact = await contact_controller.getContactByIdSociete(req.params)
-        res.status(200).json({ message: contact})
-    }
-    catch (e) {
-        res.status(500).json({ message: "can't load data" });
-    }
-
-});
-
 //======================= POST ========================//
 
 router.post('/', async function(req, res, next) {

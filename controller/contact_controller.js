@@ -42,7 +42,7 @@ async function getAllContact(){
 
 async function getContactByIdSociete(params){
     try{
-        return await contact.getContactByIdSociete(params.id_societe)
+        return await contact.getContactByIdSociete(params.id)
     }
     catch (e) {
         throw e

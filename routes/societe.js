@@ -4,6 +4,7 @@ var router = express.Router();
 const jeu_controller = require("../controller/jeu_controller")
 const societe_controller = require("../controller/societe_controller")
 const prise_contact_controller = require("../controller/prise_contact_controller")
+const contact_controller = require("../controller/contact_controller")
 
 //======================= GET ========================//
 
@@ -92,6 +93,17 @@ router.get('/:id/prise_contact', async function(req, res, next) {
     try {
         const prise_contact = await prise_contact_controller.getPriseContactByIdExposant(req.params)
         res.status(200).json({ message: prise_contact})
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't load data" });
+    }
+
+});
+
+router.get('/:id/contact', async function(req, res, next) {
+    try {
+        const contact = await contact_controller.getContactByIdSociete(req.params)
+        res.status(200).json({ message: contact})
     }
     catch (e) {
         res.status(500).json({ message: "can't load data" });
