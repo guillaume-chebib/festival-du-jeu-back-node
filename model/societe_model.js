@@ -46,9 +46,18 @@ async function getAllExposantActif() {
     }
 }
 
-async function getAllEditeur() {
+async function getAllEditeurSeulement() {
     try {
         const {rows} = await db.query('SELECT * FROM public."Societe" WHERE est_editeur_societe = true AND est_exposant_societe = false;', [])
+        return rows
+    }
+    catch (e) {
+        throw e
+    }
+}
+async function getAllEditeurs() {
+    try {
+        const {rows} = await db.query('SELECT * FROM public."Societe" WHERE est_editeur_societe = true;', [])
         return rows
     }
     catch (e) {
@@ -66,7 +75,7 @@ async function getAllEditeurExposant() {
     }
 }
 
-async function getAllExposant() {
+async function getAllExposantSeulement() {
     try {
         const {rows} = await db.query('SELECT * FROM public."Societe" WHERE est_exposant_societe = true AND est_editeur_societe = false;', [])
         return rows
@@ -119,4 +128,4 @@ async function getSocieteWithReservationByIdFestival(id) {
     }
 }
 
-module.exports = {createSociete, getAllExposant, getAllEditeurExposant, getAllEditeur, getAllExposantActif, getAllSociete, getSocieteByVille, deleteSociete, getSocieteById,updateSociete, getSocieteWithReservationByIdFestival}
+module.exports = {getAllEditeurs, createSociete, getAllExposantSeulement, getAllEditeurExposant, getAllEditeurSeulement, getAllExposantActif, getAllSociete, getSocieteByVille, deleteSociete, getSocieteById,updateSociete, getSocieteWithReservationByIdFestival}

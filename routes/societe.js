@@ -19,9 +19,9 @@ router.get('/', async function(req, res, next) {
 
 });
 
-router.get('/exposant', async function(req, res, next) {
+router.get('/exposant_seulement', async function(req, res, next) {
     try {
-        const societes = await societe_controller.getAllExposant()
+        const societes = await societe_controller.getAllExposantSeulement()
         res.status(200).json({ message: societes})
     }
     catch (e) {
@@ -30,9 +30,20 @@ router.get('/exposant', async function(req, res, next) {
 
 });
 
-router.get('/editeur', async function(req, res, next) {
+router.get('/editeur_seulement', async function(req, res, next) {
     try {
-        const societes = await societe_controller.getAllEditeur()
+        const societes = await societe_controller.getAllEditeurSeulement()
+        res.status(200).json({ message: societes})
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't load data" });
+    }
+
+});
+
+router.get('/editeurs', async function(req, res, next) {
+    try {
+        const societes = await societe_controller.getAllEditeurs()
         res.status(200).json({ message: societes})
     }
     catch (e) {

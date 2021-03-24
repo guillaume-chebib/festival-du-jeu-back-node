@@ -36,24 +36,32 @@ async function getSocieteByVille(params){
     }
 }
 
-async function getAllEditeur(){
+async function getAllEditeurSeulement(){
     try{
-        return await societe_model.getAllEditeur()
+        return await societe_model.getAllEditeurSeulement()
     }
     catch (e) {
         throw e
     }
 }
 
-async function getAllExposant(){
+async function getAllExposantSeulement(){
     try{
-        return await societe_model.getAllExposant()
+        return await societe_model.getAllExposantSeulement()
     }
     catch (e) {
         throw e
     }
 }
 
+async function getAllEditeurs(){
+    try{
+        return await societe_model.getAllEditeurs()
+    }
+    catch (e) {
+        throw e
+    }
+}
 async function getAllEditeurExposant(){
     try{
         return await societe_model.getAllEditeurExposant()
@@ -104,4 +112,4 @@ async function deleteSociete(params){
     }
 }
 
-module.exports = {getAllEditeur, getAllEditeurExposant, getAllExposant, getAllSociete,getSocieteById, getAllExposantActif, getSocieteByVille,createSociete,updateSociete, getSocieteWithReservationByIdFestival, deleteSociete}
+module.exports = {getAllEditeurs,getAllEditeurSeulement, getAllEditeurExposant, getAllExposantSeulement, getAllSociete,getSocieteById, getAllExposantActif, getSocieteByVille,createSociete,updateSociete, getSocieteWithReservationByIdFestival, deleteSociete}

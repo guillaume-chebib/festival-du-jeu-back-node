@@ -69,7 +69,7 @@ router.get('/type/:nom', async function(req, res, next) {
 //======================= POST ========================//
 
 router.post('/', async function(req, res, next) {
-
+    console.log(req.body)
     try {
         await jeu_controller.createJeu(req.body)
 
