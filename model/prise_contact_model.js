@@ -13,7 +13,7 @@ async function getAllPriseContact() {
 
 async function getPriseContactByIdFestival(id_festival) {
     try {
-        const {rows} = await db.query('select * from public."Prise_Contact" WHERE id_festival_prise_contact = $1;', [id_festival])
+        const {rows} = await db.query('select * from public."Prise_Contact"  INNER JOIN "Societe" S on S.id_societe = "Prise_Contact".id_societe_prise_contact  WHERE id_festival_prise_contact = $1;', [id_festival])
         return rows
     }
     catch (e) {

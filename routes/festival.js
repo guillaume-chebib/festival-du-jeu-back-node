@@ -185,8 +185,12 @@ router.get('/:id_festival/editeur/:id_societe/jeu', async function(req, res, nex
 router.get('/:id_festival/prise_contact', async function(req, res, next) {
     try {
 
-        const jeux = await prise_contact_controller.getPriseContactByIdFestival(req.params)
-        res.status(200).json({message:jeux})
+        const prise_contacts = await prise_contact_controller.getPriseContactByIdFestival(req.params)
+        for (i = 0; i < prise_contacts.length; i++) {
+            let contacts = await contact_controller.getContactByIdSociete(prise_contacts[i])
+            prise_contacts[i] = {...prise_contacts[i], contacts : contacts }
+        }
+        res.status(200).json({message:prise_contacts})
 
     }
     catch (e) {
