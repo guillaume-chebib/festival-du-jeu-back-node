@@ -29,7 +29,7 @@ async function updateJeu(id, titre,min_joueur,max_joueur,age,proto, id_type_jeu,
 }
 async function getAllJeu() {
     try {
-        const {rows} = await db.query('SELECT * FROM public."Jeu";', [])
+        const {rows} = await db.query('SELECT * FROM public."Jeu" INNER JOIN "Societe" S on S.id_societe = "Jeu".id_editeur_jeu LEFT JOIN "Type_Jeu" TJ on TJ.id_type_jeu = "Jeu".id_type_jeu_jeu;', [])
         return rows
     }
     catch (e) {
@@ -85,7 +85,8 @@ async function getJeuByTypeName(nom) {
 async function getJeuById(id) {
     try {
         const {rows} = await db.query('SELECT * FROM public."Jeu" j ' +
-            'JOIN public."Type_Jeu" tj ON tj.id_type_jeu = j.id_type_jeu_jeu ' +
+            'INNER JOIN "Societe" S on S.id_societe = j.id_editeur_jeu ' +
+            'LEFT JOIN public."Type_Jeu" tj ON tj.id_type_jeu = j.id_type_jeu_jeu ' +
             'WHERE id_jeu = $1;', [id])
         return rows
     }
