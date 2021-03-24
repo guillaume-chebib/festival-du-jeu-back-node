@@ -33,7 +33,7 @@ app.use(cors())
 
 app.use('/home', indexRouter);
 app.use('/users', auth, usersRouter);
-app.use('/festival', auth,festivalsRouter)
+app.use('/festival',festivalsRouter)
 app.use('/contact', auth, contactsRouter)
 app.use('/jeu',auth, jeuxRouter)
 app.use('/organisateur',auth, organisateursRouter)
