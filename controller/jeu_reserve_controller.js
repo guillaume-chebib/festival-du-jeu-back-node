@@ -52,6 +52,16 @@ async function getJeuReserveByIdFestival(params){
     }
 }
 
+async function getJeuReserveByIdFestivalPublic(params){
+    try{
+        return await jeu.getJeuReserveByIdFestivalPublic(params.id)
+    }
+    catch (e) {
+        throw e
+    }
+}
+
+
 async function getJeuReserveByIdReservation(params){
     try{
         return await jeu.getJeuReserveByIdReservation(params.id)
@@ -79,4 +89,4 @@ async function getJeuReserveByIdSocieteFestival(params){
     }
 }
 
-module.exports = {getAllJeuReserve, updateJeuReserve, createJeuReserve, deleteJeuReserve, getJeuReserveByIdReservation, getJeuReserveByIdFestival, getJeuReserveByIdZone, getJeuReserveByIdSocieteFestival}
+module.exports = {getAllJeuReserve, updateJeuReserve, createJeuReserve, deleteJeuReserve, getJeuReserveByIdReservation, getJeuReserveByIdFestival, getJeuReserveByIdZone, getJeuReserveByIdSocieteFestival,getJeuReserveByIdFestivalPublic}

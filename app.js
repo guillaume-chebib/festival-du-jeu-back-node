@@ -19,6 +19,7 @@ var societeRouter = require('./routes/societe')
 var priseContactRouter = require('./routes/prise_contact')
 var jeuReserveRouter = require('./routes/jeu_reserve')
 var commentaireRouter = require('./routes/commentaire')
+var festivalPublicRouter = require('./routes/public/festival')
 var auth = require("./middleware/auth")
 
 var app = express();
@@ -33,7 +34,7 @@ app.use(cors())
 
 app.use('/home', indexRouter);
 app.use('/users', auth, usersRouter);
-app.use('/festival',festivalsRouter)
+app.use('/festival', auth,festivalsRouter)
 app.use('/contact', auth, contactsRouter)
 app.use('/jeu',auth, jeuxRouter)
 app.use('/organisateur',auth, organisateursRouter)
@@ -46,6 +47,7 @@ app.use('/societe',auth,societeRouter)
 app.use('/priseContact',auth,priseContactRouter)
 app.use('/jeuReserve',auth,jeuReserveRouter)
 app.use('/commentaire',auth,commentaireRouter)
+app.use('/public/festival',festivalPublicRouter)
 
 
 

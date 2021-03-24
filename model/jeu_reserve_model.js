@@ -65,6 +65,20 @@ async function getJeuReserveByIdFestival(id_festival) {
     }
 }
 
+async function getJeuReserveByIdFestivalPublic(id_festival) {
+    try {
+        const {rows} = await db.query('SELECT id_jeu,titre_jeu,min_joueur_jeu,max_joueur_jeu,age_min_jeu,proto_jeu,url_consignes_jeu ' +
+            'FROM public."Jeu_Reserve" r JOIN public."Jeu" j ON r.id_jeu_jeu_reserve = j.id_jeu ' +
+            'JOIN public."Type_Jeu" tj ON tj.id_type_jeu = j.id_type_jeu_jeu ' +
+            'JOIN public."Reservation" re ON re.id_reservation = r.id_reservation_jeu_reserve ' +
+            'WHERE id_festival_reservation = $1;', [id_festival])
+        return rows
+    }
+    catch (e) {
+        throw e
+    }
+}
+
 async function getJeuReserveByIdReservation(id_reservation) {
     try {
         const {rows} = await db.query('SELECT * ' +
@@ -109,4 +123,4 @@ async function getJeuReserveByIdSocieteFestival(id_societe, id_festival) {
 }
 
 
-module.exports = {createJeuReserve,getAllJeuReserve, deleteJeuReserve, updateJeuReserve, getJeuReserveByIdFestival, getJeuReserveByIdReservation, getJeuReserveByIdZone, getJeuReserveByIdSocieteFestival}
+module.exports = {getJeuReserveByIdFestivalPublic,createJeuReserve,getAllJeuReserve, deleteJeuReserve, updateJeuReserve, getJeuReserveByIdFestival, getJeuReserveByIdReservation, getJeuReserveByIdZone, getJeuReserveByIdSocieteFestival}
