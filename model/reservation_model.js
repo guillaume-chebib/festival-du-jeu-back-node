@@ -18,7 +18,7 @@ async function getReservationById(id_reservation) {
 
 async function getReservationByIdFestival(id_festival) {
     try {
-        const query = 'SELECT * FROM public."Reservation" WHERE id_festival_reservation = $1;'
+        const query = 'SELECT * FROM public."Reservation" INNER JOIN "Societe" S on S.id_societe = "Reservation".id_societe_reservation WHERE id_festival_reservation = $1;'
         const {rows} = await db.query(query, [id_festival])
 
         return rows
