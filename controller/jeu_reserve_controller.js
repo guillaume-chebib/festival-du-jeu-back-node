@@ -1,4 +1,6 @@
 const jeu = require("../model/jeu_reserve_model")
+const festival = require("../model/festival_model")
+
 
 async function createJeuReserve(body){
     try{
@@ -52,9 +54,10 @@ async function getJeuReserveByIdFestival(params){
     }
 }
 
-async function getJeuReserveByIdFestivalPublic(params){
+async function getJeuReserveForCurrentFestivalPublic(){
     try{
-        return await jeu.getJeuReserveByIdFestivalPublic(params.id)
+        const id = await festival.getFestivalCourant()
+        return await jeu.getJeuReserveByIdFestivalPublic(id[0].id_festival)
     }
     catch (e) {
         throw e
@@ -80,6 +83,15 @@ async function getJeuReserveByIdZone(params){
     }
 }
 
+async function getJeuReserveByIdZonePublic(params){
+    try{
+        return await jeu.getJeuReserveByIdZonePublic(params.id_zone)
+    }
+    catch (e) {
+        throw e
+    }
+}
+
 async function getJeuReserveByIdSocieteFestival(params){
     try{
         return await jeu.getJeuReserveByIdSocieteFestival(params.id_societe,params.id_festival)
@@ -88,5 +100,12 @@ async function getJeuReserveByIdSocieteFestival(params){
         throw e
     }
 }
-
-module.exports = {getAllJeuReserve, updateJeuReserve, createJeuReserve, deleteJeuReserve, getJeuReserveByIdReservation, getJeuReserveByIdFestival, getJeuReserveByIdZone, getJeuReserveByIdSocieteFestival,getJeuReserveByIdFestivalPublic}
+async function getJeuReserveByIdSocieteFestivalPublic(params){
+    try{
+        return await jeu.getJeuReserveByIdSocieteFestivalPublic(params.id_societe,params.id_festival)
+    }
+    catch (e) {
+        throw e
+    }
+}
+module.exports = {getJeuReserveByIdSocieteFestivalPublic,getJeuReserveByIdZonePublic,getAllJeuReserve, updateJeuReserve, createJeuReserve, deleteJeuReserve, getJeuReserveByIdReservation, getJeuReserveByIdFestival, getJeuReserveByIdZone, getJeuReserveByIdSocieteFestival,getJeuReserveForCurrentFestivalPublic}
