@@ -1,4 +1,5 @@
 const zone = require("../model/zone_model")
+const jeu_reserve = require("../model/jeu_reserve_model")
 
 async function createZone(body){
     try{
@@ -38,7 +39,14 @@ async function getAllZone(){
 
 async function getZoneByIdFestival(params){
     try{
-        return await zone.getZoneByIdFestival(params.id)
+        res_json = []
+        const zones = await zone.getZoneByIdFestival(params.id)
+        for (i = 0; i < zones.length; i++) {
+            let jeuxZone = await jeu_reserve.getJeuReserveByIdZone(zones[i].id_zone_jeu_reserve)
+            json_temp = {zone : zones[i], jeux : jeuxZone}
+            res_json = res_json.concat(json_temp);
+        }
+        return zones
     }
     catch (e) {
         throw e

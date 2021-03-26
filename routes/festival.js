@@ -98,14 +98,7 @@ router.get('/:id/jeu', async function(req, res, next) {
  */
 router.get('/:id/zone', async function(req, res, next) {
     try {
-        res_json = []
         const zones = await zone_controller.getZoneByIdFestival(req.params)
-        for (i = 0; i < zones.length; i++) {
-            let jeuxZone = await jeu_reserve_controller.getJeuReserveByIdZone(zones[i])
-            json_temp = {zone : zones[i], jeux : jeuxZone}
-            res_json = res_json.concat(json_temp);
-        }
-
         res.status(200).json({message:res_json})
 
     }
@@ -124,12 +117,6 @@ router.get('/:id/exposant', async function(req, res, next) {
     try {
         res_json = []
         const societes = await societe_controller.getAllExposantActif(req.params)
-
-        // for (i = 0; i < societes.length; i++) {
-        //     let contacts = await contact_controller.getContactByIdSociete(societes[i])
-        //     json_temp = {societe : societes[i], contacts : contacts}
-        //     res_json = res_json.concat(json_temp);
-        // }
 
         res.status(200).json({message:societes})
 
@@ -184,7 +171,6 @@ router.get('/:id_festival/editeur/:id_societe/jeu', async function(req, res, nex
 });
 router.get('/:id_festival/prise_contact', async function(req, res, next) {
     try {
-
         const prise_contacts = await prise_contact_controller.getPriseContactByIdFestival(req.params)
         for (i = 0; i < prise_contacts.length; i++) {
             let contacts = await contact_controller.getContactByIdSociete(prise_contacts[i])
