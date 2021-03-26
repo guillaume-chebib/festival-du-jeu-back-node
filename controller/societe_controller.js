@@ -1,5 +1,7 @@
 const societe_model = require("../model/societe_model")
 const contact_model = require("../model/contact_model")
+const jeu_reserve_controller = require("../controller/jeu_reserve_controller")
+const festival = require("../model/festival_model")
 
 async function getAllSociete(){
     try{
@@ -73,6 +75,15 @@ async function getAllEditeurs(){
         throw e
     }
 }
+
+async function getAllEditeursPublic(){
+    try{
+        return await societe_model.getAllEditeursPublic()
+    }
+    catch (e) {
+        throw e
+    }
+}
 async function getAllEditeurExposant(){
     try{
         const societes = await societe_model.getAllEditeurExposant()
@@ -135,4 +146,21 @@ async function deleteSociete(params){
     }
 }
 
-module.exports = {getAllEditeurNonInactif,getAllEditeurs,getAllEditeurSeulement, getAllEditeurExposant, getAllExposantSeulement, getAllSociete,getSocieteById, getAllExposantActif, getSocieteByVille,createSociete,updateSociete, getSocieteWithReservationByIdFestival, deleteSociete}
+async function getEditeurForCurrentFestivalPublic(){
+    const id = await festival.getFestivalCourant()
+
+    const societes = await getAllEditeursPublic()
+    let res_json = []
+    for (let i = 0; i < societes.length; i++) {
+        let jeuxSociete = await jeu_reserve_controller.getJeuReserveByIdSocieteFestivalPublic({id_societe:societes[i].id_societe,id_festival:id[0].id_festival})
+        console.log(jeuxSociete)
+        if(jeuxSociete.length >0) {
+            let json_temp = {societe: societes[i], jeux: jeuxSociete}
+            res_json = res_json.concat(json_temp);
+        }
+    }
+
+    return res_json
+}
+
+module.exports = {getAllEditeursPublic,getEditeurForCurrentFestivalPublic,getAllEditeurNonInactif,getAllEditeurs,getAllEditeurSeulement, getAllEditeurExposant, getAllExposantSeulement, getAllSociete,getSocieteById, getAllExposantActif, getSocieteByVille,createSociete,updateSociete, getSocieteWithReservationByIdFestival, deleteSociete}
