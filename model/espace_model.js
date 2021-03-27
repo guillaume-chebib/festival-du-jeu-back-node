@@ -11,10 +11,10 @@ async function getAllEspace() {
     }
 }
 
-async function createEspace(prix_table, prix_surface ,nb_table, id_festival) {
+async function createEspace(prix_table, prix_surface ,nb_table, nom_espace, id_festival) {
     try {
-       await db.query('INSERT INTO public."Espace" (prix_table_espace,prix_surface_espace,nb_table_espace,id_festival_espace) VALUES($1,$2, $3, $4);',
-           [prix_table, prix_surface ,nb_table, id_festival])
+       await db.query('INSERT INTO public."Espace" (prix_table_espace,prix_surface_espace,nb_table_espace,nom_espace,id_festival_espace) VALUES($1,$2,$3,$4,$5);',
+           [prix_table, prix_surface ,nb_table,nom_espace, id_festival])
     }
     catch (e) {
         throw e

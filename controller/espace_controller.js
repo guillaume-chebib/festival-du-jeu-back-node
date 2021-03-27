@@ -27,9 +27,9 @@ async function getEspaceById(id){
     }
 }
 
-async function createEspace(body) {
+async function createEspace(body,id) {
     try{
-        await espace_model.createEspace(body.prix_table_espace,body.prix_surface_espace, body.nb_table_espace,body.id_festival_espace)
+        await espace_model.createEspace(body.prix_table_espace,body.prix_surface_espace, body.nb_table_espace, body.nom_espace,id)
     }
     catch (e) {
         throw e
