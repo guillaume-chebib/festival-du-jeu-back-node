@@ -5,7 +5,6 @@ const festival_controller = require("../controller/festival_controller")
 const reservation_controller = require("../controller/reservation_controller")
 const jeu_reserve_controller = require("../controller/jeu_reserve_controller")
 const zone_controller = require("../controller/zone_controller")
-const contact_controller = require("../controller/contact_controller")
 const societe_controller = require("../controller/societe_controller")
 const prise_contact_controller = require("../controller/prise_contact_controller")
 const espace_controller = require("../controller/espace_controller")
@@ -172,10 +171,7 @@ router.get('/:id_festival/editeur/:id_societe/jeu', async function(req, res, nex
 router.get('/:id_festival/prise_contact', async function(req, res, next) {
     try {
         const prise_contacts = await prise_contact_controller.getPriseContactByIdFestival(req.params)
-        for (i = 0; i < prise_contacts.length; i++) {
-            let contacts = await contact_controller.getContactByIdSociete(prise_contacts[i])
-            prise_contacts[i] = {...prise_contacts[i], contacts : contacts }
-        }
+
         res.status(200).json({message:prise_contacts})
 
     }

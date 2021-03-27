@@ -1,6 +1,8 @@
 
 
 const prisecontact = require("../model/prise_contact_model")
+const contact_controller = require("../controller/contact_controller")
+
 
 async function getAllPriseContact(){
     try{
@@ -30,7 +32,15 @@ async function getPriseContactById(params){
 }
 async function getPriseContactByIdFestival(params) {
     try{
-        return await prisecontact.getPriseContactByIdFestival(params.id_festival)
+
+        const prise_contacts = await prisecontact.getPriseContactByIdFestival(params.id_festival)
+
+        for (let i = 0; i < prise_contacts.length; i++) {
+            let contacts = await contact_controller.getContactByIdSociete(prise_contacts[i])
+            prise_contacts[i] = {...prise_contacts[i], contacts : contacts }
+        }
+
+        return prise_contacts
     }
     catch (e) {
         throw e
