@@ -15,7 +15,7 @@ async function createContact(body){
 async function updateContact(params,body){
     try{
         await contact.updateContact(params.id,body.prenom_contact,body.nom_contact,body.email_contact,
-            body.telephone_portable_contact,body.telephone_fixe_contact, body.fonction_contact, body.est_principal_contact,body.id_societe)
+            body.telephone_portable_contact,body.telephone_fixe_contact, body.fonction_contact, body.est_principal_contact,body.id_societe_contact)
     }
     catch (e) {
         console.log(e)
