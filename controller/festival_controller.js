@@ -6,7 +6,13 @@ const espace_controller = require("../controller/espace_controller")
 
 async function getAllFestival(){
     try{
-        return await festival.getAllFestival()
+        let festivals = await festival.getAllFestival()
+
+        festivals =await Promise.all(festivals.map(async (festival) => ({
+            ...festival,
+            espaces: await espace_controller.getEspaceByIdFestival({id:festival.id_festival})
+        })))
+        return festivals
     }
     catch (e) {
         throw e
@@ -32,7 +38,7 @@ async function createFestival(body){
         await espace_controller.createEspace({prix_table_espace : body.prix_table_espace_2,prix_surface_espace:body.prix_surface_espace_2, nb_table_espace : body.nb_table_espace_2, nom_espace:"Espace 2"}, id)
         await espace_controller.createEspace({prix_table_espace : body.prix_table_espace_3,prix_surface_espace:body.prix_surface_espace_3, nb_table_espace : body.nb_table_espace_3, nom_espace:"Espace 3"}, id)
 
-        //await initilisationPriseContact(id)
+        await initilisationPriseContact(id)
 
 
     }
