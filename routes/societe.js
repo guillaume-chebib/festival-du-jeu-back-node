@@ -57,6 +57,7 @@ router.get('/editeurExposant', async function(req, res, next) {
     try {
         const societes = await societe_controller.getAllEditeurExposant()
         res.status(200).json({ message: societes})
+
     }
     catch (e) {
         res.status(500).json({ message: "can't load data" });

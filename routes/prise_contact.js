@@ -43,6 +43,18 @@ router.get('/:id_festival/:id_exposant', async function(req, res, next) {
 
 });
 
+router.get('/statutsPriseContact', async function(req, res, next) {
+    try {
+
+        const status = await prise_contact_controller.getStatusPriseContact()
+        res.status(200).json({message:status})
+
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't modify data" });
+    }
+
+});
 
 
 module.exports = router;

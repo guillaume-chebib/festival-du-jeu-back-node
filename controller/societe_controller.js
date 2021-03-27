@@ -1,7 +1,7 @@
 const societe_model = require("../model/societe_model")
+const contact_model = require("../model/contact_model")
 const jeu_reserve_controller = require("../controller/jeu_reserve_controller")
 const festival = require("../model/festival_model")
-
 
 async function getAllSociete(){
     try{
@@ -41,7 +41,12 @@ async function getSocieteByVille(params){
 
 async function getAllEditeurSeulement(){
     try{
-        return await societe_model.getAllEditeurSeulement()
+        const societes = await societe_model.getAllEditeurSeulement()
+        for (let i = 0; i < societes.length; i++) {
+            let contacts = await contact_model.getContactByIdSociete(societes[i].id_societe)
+            societes[i] = {...societes[i], contacts : contacts }
+        }
+        return societes
     }
     catch (e) {
         throw e
@@ -50,7 +55,12 @@ async function getAllEditeurSeulement(){
 
 async function getAllExposantSeulement(){
     try{
-        return await societe_model.getAllExposantSeulement()
+        const societes = await societe_model.getAllExposantSeulement()
+        for (let i = 0; i < societes.length; i++) {
+            let contacts = await contact_model.getContactByIdSociete(societes[i].id_societe)
+            societes[i] = {...societes[i], contacts : contacts }
+        }
+        return societes
     }
     catch (e) {
         throw e
@@ -76,7 +86,12 @@ async function getAllEditeursPublic(){
 }
 async function getAllEditeurExposant(){
     try{
-        return await societe_model.getAllEditeurExposant()
+        const societes = await societe_model.getAllEditeurExposant()
+        for (let i = 0; i < societes.length; i++) {
+            let contacts = await contact_model.getContactByIdSociete(societes[i].id_societe)
+            societes[i] = {...societes[i], contacts : contacts }
+        }
+        return societes
     }
     catch (e) {
         throw e
