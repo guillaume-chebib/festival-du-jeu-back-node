@@ -6,7 +6,13 @@ const espace_controller = require("../controller/espace_controller")
 
 async function getAllFestival(){
     try{
-        return await festival.getAllFestival()
+        let festivals = await festival.getAllFestival()
+
+        festivals =await Promise.all(festivals.map(async (festival) => ({
+            ...festival,
+            espaces: await espace_controller.getEspaceByIdFestival({id:festival.id_festival})
+        })))
+        return festivals
     }
     catch (e) {
         throw e
