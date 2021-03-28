@@ -19,6 +19,18 @@ router.get('/:id', async function(req, res, next) {
 });
 
 
+router.get('/:id/jeuxReserves', async function(req, res, next) {
+    try {
+        const jeux = await jeu_reserve_controller.getJeuReserveByIdReservation(req.params)
+
+        res.status(200).json({message:jeux})
+
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't load data" });
+    }
+
+});
 router.put('/:id', async function(req, res, next) {
 
     try {

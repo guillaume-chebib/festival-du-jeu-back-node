@@ -98,7 +98,7 @@ router.get('/:id/jeu', async function(req, res, next) {
 router.get('/:id/zone', async function(req, res, next) {
     try {
         const zones = await zone_controller.getZoneByIdFestival(req.params)
-        res.status(200).json({message:res_json})
+        res.status(200).json({message:zones})
 
     }
     catch (e) {
@@ -168,6 +168,7 @@ router.get('/:id_festival/editeur/:id_societe/jeu', async function(req, res, nex
     }
 
 });
+
 router.get('/:id_festival/prise_contact', async function(req, res, next) {
     try {
         const prise_contacts = await prise_contact_controller.getPriseContactByIdFestival(req.params)
