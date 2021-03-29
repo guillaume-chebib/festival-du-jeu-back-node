@@ -7,12 +7,14 @@ const commentaire_controller = require("../controller/commentaire_controller")
 async function getReservationById(params) {
 
     try{
-        let reservation =  await reservation_model.getReservationById(params.id)
-        const jeux = await jeu_reserve_controller.getJeuReserveByIdReservation(req.params)
-        const allocations_espace = await allocation_espace_controller.getAllocationsByIdReservation(req.params)
-        const commentaires = await commentaire_controller.getCommentairesByIdReservation(req.params)
-        console.log(params)
+        let reservation =  (await reservation_model.getReservationById(params.id))[0]
+        console.log(reservation)
+        const jeux = await jeu_reserve_controller.getJeuReserveByIdReservation(params.id)
+        const allocations_espace = await allocation_espace_controller.getAllocationsByIdReservation(params.id)
+        const commentaires = await commentaire_controller.getCommentairesByIdReservation(params.id)
+
         reservation = {...reservation, jeux : jeux, allocations_espace : allocations_espace,  commentaires : commentaires}
+
         return reservation
     }
     catch (e) {

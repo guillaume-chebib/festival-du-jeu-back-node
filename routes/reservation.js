@@ -6,7 +6,6 @@ const jeu_reserve_controller = require("../controller/jeu_reserve_controller")
 const allocation_espace_controller = require("../controller/allocation_espace_controller")
 
 router.get('/:id', async function(req, res, next) {
-    console.log(req.params)
     try {
         const reservation = await reservation_controller.getReservationById(req.params)
 
@@ -32,7 +31,6 @@ router.get('/:id/jeuxReserves', async function(req, res, next) {
 
 });
 router.put('/:id', async function(req, res, next) {
-
     try {
         await reservation_controller.updateReservation(req.body)
         res.status(200).json({ message: "success"})
