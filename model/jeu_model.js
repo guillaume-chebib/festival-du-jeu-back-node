@@ -51,7 +51,7 @@ async function deleteJeu(id) {
 async function getJeuByIdEditeur(id_societe) {
     try {
         const {rows} = await db.query('SELECT * FROM public."Jeu" j ' +
-            'JOIN public."Type_Jeu" tj ON tj.id_type_jeu = j.id_type_jeu_jeu ' +
+            'LEFT JOIN public."Type_Jeu" tj ON tj.id_type_jeu = j.id_type_jeu_jeu ' +
             'WHERE id_editeur_jeu = $1;', [id_societe])
         return rows
     }

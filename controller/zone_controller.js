@@ -48,7 +48,7 @@ async function getZoneByIdFestival(params){
             json_temp = {zone : zones[i], jeux : jeuxZone}
             res_json = res_json.concat(json_temp);
         }
-        return zones
+        return res_json
     }
     catch (e) {
         throw e
@@ -59,7 +59,6 @@ async function getZoneForCurrentFestivalPublic(){
     try{
         let res_json = []
         const id = await festival.getFestivalCourant()
-        console.log(id)
         let zones = await zone.getZoneByIdFestival(id[0].id_festival)
         for (let i = 0; i < zones.length; i++) {
             let jeuxZone = await jeu_reserve_controller.getJeuReserveByIdZonePublic(zones[i])
