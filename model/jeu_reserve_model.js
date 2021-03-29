@@ -67,8 +67,10 @@ async function getJeuReserveByIdFestival(id_festival) {
 
 async function getJeuReserveByIdFestivalPublic(id_festival) {
     try {
-        const {rows} = await db.query('SELECT id_jeu,titre_jeu,min_joueur_jeu,max_joueur_jeu,age_min_jeu,proto_jeu,url_consignes_jeu ' +
+        const {rows} = await db.query('SELECT id_jeu,titre_jeu,min_joueur_jeu,max_joueur_jeu,age_min_jeu,proto_jeu,url_consignes_jeu, nom_societe, nom_zone ' +
             'FROM public."Jeu_Reserve" r JOIN public."Jeu" j ON r.id_jeu_jeu_reserve = j.id_jeu ' +
+            'JOIN public."Zone" z ON r.id_zone_jeu_reserve = z.id_zone ' +
+            'JOIN public."Societe" s ON j.id_editeur_jeu = s.id_societe ' +
             'JOIN public."Type_Jeu" tj ON tj.id_type_jeu = j.id_type_jeu_jeu ' +
             'JOIN public."Reservation" re ON re.id_reservation = r.id_reservation_jeu_reserve ' +
             'WHERE id_festival_reservation = $1;', [id_festival])
@@ -109,7 +111,7 @@ async function getJeuReserveByIdZone(id_zone) {
 
 async function getJeuReserveByIdZonePublic(id_zone) {
     try {
-        const {rows} = await db.query('SELECT id_jeu,titre_jeu,min_joueur_jeu,max_joueur_jeu,age_min_jeu,proto_jeu,url_consignes_jeu ' +
+        const {rows} = await db.query('SELECT id_jeu,titre_jeu,min_joueur_jeu,max_joueur_jeu,age_min_jeu,proto_jeu,url_consignes_jeu, nom_societe, nom_zone ' +
             'FROM public."Jeu_Reserve" r JOIN public."Jeu" j ON r.id_jeu_jeu_reserve = j.id_jeu ' +
             'JOIN public."Societe" s ON s.id_societe = j.id_editeur_jeu ' +
             'JOIN public."Type_Jeu" tj ON tj.id_type_jeu = j.id_type_jeu_jeu ' +
@@ -140,12 +142,13 @@ async function getJeuReserveByIdSocieteFestival(id_societe, id_festival) {
 
 async function getJeuReserveByIdSocieteFestivalPublic(id_societe, id_festival) {
     try {
-        const {rows} = await db.query('SELECT id_jeu,titre_jeu,min_joueur_jeu,max_joueur_jeu,age_min_jeu,proto_jeu,url_consignes_jeu ' +
+        const {rows} = await db.query('SELECT id_jeu,titre_jeu,min_joueur_jeu,max_joueur_jeu,age_min_jeu,proto_jeu,url_consignes_jeu,nom_societe,nom_zone ' +
             'FROM public."Jeu_Reserve" r JOIN public."Jeu" j ON r.id_jeu_jeu_reserve = j.id_jeu ' +
+            'JOIN public."Zone" z ON r.id_zone_jeu_reserve = z.id_zone ' +
             'JOIN public."Type_Jeu" tj ON tj.id_type_jeu = j.id_type_jeu_jeu ' +
             'JOIN public."Reservation" re ON re.id_reservation = r.id_reservation_jeu_reserve ' +
-            'JOIN public."Societe" s ON s.id_societe = re.id_societe_reservation ' +
-            'WHERE id_societe_reservation = $1 AND id_festival_reservation = $2;', [id_societe,id_festival])
+            'JOIN public."Societe" s ON s.id_societe = j.id_editeur_jeu ' +
+            'WHERE id_editeur_jeu = $1 AND id_festival_reservation = $2;', [id_societe,id_festival])
         return rows
     }
     catch (e) {
