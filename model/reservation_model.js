@@ -27,10 +27,23 @@ async function getReservationByIdFestival(id_festival) {
     }
 }
 
-async function updateReservation(id, besoin_benevol, deplacement, apport_jeux, reduction, cr_envoye, date_envoi_facture, date_paye_facture,commentaire) {
+async function updateReservation(id, besoin_benevol, deplacement, apport_jeux, reduction, cr_envoye,commentaire) {
     try {
-        const query = 'UPDATE public."Reservation" SET besoin_benevole_reservation = $2, deplacement_reservation = $3, apport_jeux_reservation = $4, reduction_reservation = $5, cr_envoye_reservation = $6, date_envoi_facture = $7, date_paye_facture = $8, commentaire_reservation =$9 WHERE id_reservation = $1;'
-        const params = [id, besoin_benevol, deplacement, apport_jeux, reduction, cr_envoye, date_envoi_facture, date_paye_facture,commentaire]
+        console.log(id, besoin_benevol, deplacement, apport_jeux, reduction, cr_envoye,commentaire)
+
+        const query = 'UPDATE public."Reservation" SET besoin_benevole_reservation = $2, deplacement_reservation = $3, apport_jeux_reservation = $4, reduction_reservation = $5, cr_envoye_reservation = $6, commentaire_reservation =$7 WHERE id_reservation = $1;'
+        const params = [id, besoin_benevol, deplacement, apport_jeux, reduction, cr_envoye,commentaire]
+        await db.query(query, params)
+    }
+    catch (e) {
+        throw e
+
+    }
+}
+async function updateReservationDate(id, date_envoi_facture, date_paye_facture) {
+    try {
+        const query = 'UPDATE public."Reservation" SET date_envoi_facture=$2 , date_paye_facture=$3 WHERE id_reservation = $1;'
+        const params = [id, date_envoi_facture, date_paye_facture]
         await db.query(query, params)
     }
     catch (e) {
@@ -64,4 +77,4 @@ async function deleteReservation(id) {
     }
 }
 
-module.exports = {getReservationById, getReservationByIdFestival,updateReservation,createReservation,deleteReservation}
+module.exports = {getReservationById, getReservationByIdFestival,updateReservation,createReservation,deleteReservation,updateReservationDate}

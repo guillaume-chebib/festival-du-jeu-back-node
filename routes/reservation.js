@@ -41,6 +41,17 @@ router.put('/:id', async function(req, res, next) {
 
 });
 
+router.put('/:id/date', async function(req, res, next) {
+    try {
+        await reservation_controller.updateDateReservation(req.body)
+        res.status(200).json({ message: "success"})
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't modify data" });
+    }
+
+});
+
 router.post('/', async function(req, res, next) {
 
     try {
