@@ -19,7 +19,7 @@ router.post('/', async function(req, res, next) {
 
 //======================= DELETE ========================//
 
-router.delete('/:id', async function(req, res, next) {
+router.delete('/:id/:id_reservation', async function(req, res, next) {
     try {
         await jeu_reserve_controller.deleteJeuReserve(req.params)
         res.status(200).json({message:"success"})
