@@ -41,10 +41,10 @@ async function createEspace(body,id) {
 async function updateEspace(body,params) {
     try {
         await espace_model.updateEspace(body.prix_table_espace,body.prix_surface_espace,body.nb_table_espace,params.id)
-        res.status(200).json({ message: "success"})
+
     }
     catch (e) {
-        res.status(500).json({ message: "can't modify data" });
+        console.log(e)
     }
 }
 

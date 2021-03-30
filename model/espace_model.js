@@ -21,10 +21,11 @@ async function createEspace(prix_table, prix_surface ,nb_table, nom_espace, id_f
     }
 }
 
-async function updateEspace(prix_table, prix_surface ,nb_table, id_festival,id) {
+async function updateEspace(prix_table, prix_surface ,nb_table, id) {
     try {
-        await db.query('UPDATE public."Espace" SET prix_table_espace = $1, prix_surface_espace = $2, nb_table_espace =$3 WHERE id_espace = $4;',
-            [prix_table, prix_surface ,nb_table, id_festival,id])
+         const res = await db.query('UPDATE public."Espace" SET prix_table_espace = $1, prix_surface_espace = $2, nb_table_espace =$3 WHERE id_espace = $4;',
+            [prix_table, prix_surface ,nb_table, id])
+        console.log(res)
     }
     catch (e) {
         throw e
