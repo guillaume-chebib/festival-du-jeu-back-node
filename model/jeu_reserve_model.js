@@ -85,7 +85,7 @@ async function getJeuReserveByIdReservation(id_reservation) {
     try {
         const {rows} = await db.query('SELECT * ' +
             'FROM public."Jeu_Reserve" r JOIN public."Jeu" j ON r.id_jeu_jeu_reserve = j.id_jeu ' +
-            'JOIN public."Type_Jeu" tj ON tj.id_type_jeu = j.id_type_jeu_jeu ' +
+            'LEFT JOIN public."Type_Jeu" tj ON tj.id_type_jeu = j.id_type_jeu_jeu ' +
             'WHERE id_reservation_jeu_reserve = $1;', [id_reservation])
         return rows
     }
