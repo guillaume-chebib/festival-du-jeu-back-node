@@ -3,7 +3,6 @@ const db = require('../db')
 
 async function getReservationById(id_reservation) {
     try {
-        console.log(id_reservation)
         const query = 'SELECT * FROM "Reservation" R INNER JOIN "Festival" F on F.id_festival = R.id_festival_reservation INNER JOIN "Societe" S on S.id_societe = R.id_societe_reservation INNER JOIN "Prise_Contact" PC on F.id_festival = PC.id_festival_prise_contact and R.id_societe_reservation = PC.id_societe_prise_contact WHERE id_reservation = $1;'
         const {rows} = await db.query(query, [id_reservation])
 
