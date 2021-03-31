@@ -44,7 +44,7 @@ async function getEspaceById(id) {
 async function getEspaceByIdFestival(id) {
     try {
         const {rows} =  await db.query('SELECT * FROM public."Espace" WHERE id_festival_espace = $1;', [id])
-        return {rows}
+        return rows
     }
     catch (e) {
         throw e
