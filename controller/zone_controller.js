@@ -41,11 +41,11 @@ async function getAllZone(){
 
 async function getZoneByIdFestival(params){
     try{
-        res_json = []
+        let res_json = []
         const zones = await zone.getZoneByIdFestival(params.id)
         for (i = 0; i < zones.length; i++) {
             let jeuxZone = await jeu_reserve.getJeuReserveByIdZone(zones[i].id_zone_jeu_reserve)
-            json_temp = {zone : zones[i], jeux : jeuxZone}
+            let json_temp = {zone : zones[i], jeux : jeuxZone}
             res_json = res_json.concat(json_temp);
         }
         return res_json
