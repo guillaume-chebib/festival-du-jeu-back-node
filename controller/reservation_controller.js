@@ -11,9 +11,9 @@ async function getReservationById(params) {
 
     try{
         let reservation =  (await reservation_model.getReservationById(params.id))[0]
-        const jeux = await jeu_reserve_controller.getJeuReserveByIdReservation({params :params})
-        const allocations_espace = await allocation_espace_controller.getAllocationsByIdReservation({params :params})
-        const commentaires = await commentaire_controller.getCommentairesByIdReservation({params :params})
+        const jeux = await jeu_reserve_controller.getJeuReserveByIdReservation(params)
+        const allocations_espace = await allocation_espace_controller.getAllocationsByIdReservation(params)
+        const commentaires = await commentaire_controller.getCommentairesByIdReservation(params)
 
         reservation = {...reservation, jeux : jeux, allocations_espace : allocations_espace,  commentaires : commentaires}
         return reservation
