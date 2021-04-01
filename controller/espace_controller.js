@@ -11,9 +11,7 @@ async function getAllEspace(){
 
 async function getEspaceByIdFestival(params){
     try{
-        let res = await espace_model.getEspaceByIdFestival(params.id)
-        //console.log(res)
-        return res
+        return await espace_model.getEspaceByIdFestival(params.id)
     }
     catch (e) {
         throw e
