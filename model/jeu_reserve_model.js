@@ -67,7 +67,7 @@ async function getJeuReserveByIdFestival(id_festival) {
 
 async function getJeuReserveByIdFestivalPublic(id_festival) {
     try {
-        const {rows} = await db.query('SELECT id_jeu,titre_jeu,min_joueur_jeu,max_joueur_jeu,age_min_jeu,proto_jeu,url_consignes_jeu, nom_societe, nom_zone ' +
+        const {rows} = await db.query('SELECT id_jeu,titre_jeu,min_joueur_jeu,max_joueur_jeu,age_min_jeu,proto_jeu,url_consignes_jeu, nom_societe, nom_zone, duree_jeu ' +
             'FROM public."Jeu_Reserve" r JOIN public."Jeu" j ON r.id_jeu_jeu_reserve = j.id_jeu ' +
             'JOIN public."Zone" z ON r.id_zone_jeu_reserve = z.id_zone ' +
             'JOIN public."Societe" s ON j.id_editeur_jeu = s.id_societe ' +
@@ -112,7 +112,7 @@ async function getJeuReserveByIdZone(id_zone) {
 
 async function getJeuReserveByIdZonePublic(id_zone) {
     try {
-        const {rows} = await db.query('SELECT id_jeu,titre_jeu,min_joueur_jeu,max_joueur_jeu,age_min_jeu,proto_jeu,url_consignes_jeu, nom_societe, nom_zone ' +
+        const {rows} = await db.query('SELECT id_jeu,titre_jeu,min_joueur_jeu,max_joueur_jeu,age_min_jeu,proto_jeu,url_consignes_jeu, nom_societe, nom_zone, duree_jeu ' +
             'FROM public."Jeu_Reserve" r JOIN public."Jeu" j ON r.id_jeu_jeu_reserve = j.id_jeu ' +
             'JOIN public."Societe" s ON s.id_societe = j.id_editeur_jeu ' +
             'LEFT JOIN public."Type_Jeu" tj ON tj.id_type_jeu = j.id_type_jeu_jeu ' +
@@ -143,7 +143,7 @@ async function getJeuReserveByIdSocieteFestival(id_societe, id_festival) {
 
 async function getJeuReserveByIdSocieteFestivalPublic(id_societe, id_festival) {
     try {
-        const {rows} = await db.query('SELECT id_jeu,titre_jeu,min_joueur_jeu,max_joueur_jeu,age_min_jeu,proto_jeu,url_consignes_jeu,nom_societe,nom_zone ' +
+        const {rows} = await db.query('SELECT id_jeu,titre_jeu,min_joueur_jeu,max_joueur_jeu,age_min_jeu,proto_jeu,url_consignes_jeu,nom_societe,nom_zone, duree_jeu ' +
             'FROM public."Jeu_Reserve" r JOIN public."Jeu" j ON r.id_jeu_jeu_reserve = j.id_jeu ' +
             'JOIN public."Zone" z ON r.id_zone_jeu_reserve = z.id_zone ' +
             'LEFT JOIN public."Type_Jeu" tj ON tj.id_type_jeu = j.id_type_jeu_jeu ' +
