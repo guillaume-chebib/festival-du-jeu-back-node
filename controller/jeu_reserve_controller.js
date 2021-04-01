@@ -29,7 +29,7 @@ async function updateJeuReserve(params,body){
 
 async function deleteJeuReserve(params){
     try{
-        return await jeu.deleteJeuReserve(params.id_jeu,params.id_reservation)
+        return await jeu.deleteJeuReserve(params.id,params.id_reservation)
     }
     catch (e) {
         throw e

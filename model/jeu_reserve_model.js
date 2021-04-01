@@ -42,7 +42,7 @@ async function getAllJeuReserve() {
 
 async function deleteJeuReserve(id_jeu,id_reservation) {
     try {
-        const {rows} = await db.query('DELETE FROM public."Jeu_Reserve" WHERE id_jeu_jeu_reserve = $1 AND id_reservation = $2;', [id_jeu,id_reservation])
+        const {rows} = await db.query('DELETE FROM public."Jeu_Reserve" WHERE id_jeu_jeu_reserve = $1 AND id_reservation_jeu_reserve = $2;', [id_jeu,id_reservation])
         return rows
     }
     catch (e) {
