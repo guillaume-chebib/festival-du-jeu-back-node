@@ -74,6 +74,8 @@ async function createReservation(body){
             },{id_reservation_allocation_espace : id_reservation})
         })
 
+        return id_reservation
+
     }
     catch (e) {
         throw e
