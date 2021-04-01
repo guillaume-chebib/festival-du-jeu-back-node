@@ -92,20 +92,6 @@ router.post('/:id/allocation_espace/', async function(req, res, next) {
 
 });
 
-//======================= PUT ========================//
-
-router.put('/:id/jeuReserve/:id_jeu', async function(req, res, next) {
-    try {
-        await jeu_reserve_controller.updateJeuReserve(req.params,req.body)
-        res.status(200).json({message:"success"})
-
-    }
-    catch (e) {
-        res.status(500).json({ message: "can't modify data" });
-    }
-
-});
-
 router.put('/:id/allocation_espace/:id_espace', async function(req, res, next) {
 
     try {
@@ -129,6 +115,20 @@ router.delete('/:id/allocation_espace/:id_espace', async function(req, res, next
     }
 
 });
+//======================= PUT ========================//
+
+router.put('/:id/jeuReserve/:id_jeu', async function(req, res, next) {
+    try {
+        await jeu_reserve_controller.updateJeuReserve(req.params,req.body)
+        res.status(200).json({message:"success"})
+
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't modify data" });
+    }
+
+});
+
 
 
 

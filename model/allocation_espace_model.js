@@ -40,6 +40,7 @@ async function updateAllocationEspace(nb_table_allocation, m2_allocation, remise
         await db.query(query, params)
     }
     catch (e) {
+        console.log(e)
         throw e
     }
 }
