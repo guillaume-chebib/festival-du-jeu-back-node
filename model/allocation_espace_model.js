@@ -3,7 +3,7 @@ const db = require('../db')
 
 async function getAllocationsByIdReservation(id) {
     try {
-        const query = 'SELECT * FROM public."Allocation_Espace" WHERE id_reservation_allocation_espace = $1;'
+        const query = 'SELECT * FROM public."Allocation_Espace" INNER JOIN "Espace" E on E.id_espace = "Allocation_Espace".id_espace_allocation_espace WHERE id_reservation_allocation_espace = $1;'
         const {rows} = await db.query(query,[id] )
         return rows
     }
@@ -40,6 +40,7 @@ async function updateAllocationEspace(nb_table_allocation, m2_allocation, remise
         await db.query(query, params)
     }
     catch (e) {
+        console.log(e)
         throw e
     }
 }
