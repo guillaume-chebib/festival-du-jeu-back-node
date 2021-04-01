@@ -153,7 +153,7 @@ async function getEditeurForCurrentFestivalPublic(){
     let res_json = []
     for (let i = 0; i < societes.length; i++) {
         let jeuxSociete = await jeu_reserve_controller.getJeuReserveByIdSocieteFestivalPublic({id_societe:societes[i].id_societe,id_festival:id[0].id_festival})
-        console.log(jeuxSociete)
+
         if(jeuxSociete.length >0) {
             let json_temp = {societe: societes[i], jeux: jeuxSociete}
             res_json = res_json.concat(json_temp);

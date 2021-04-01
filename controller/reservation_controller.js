@@ -35,6 +35,24 @@ async function getReservationsByIdFestival(params) {
     }
 }
 
+async function getCAPrevuByIdFestival(params) {
+    try {
+        return await reservation_model.getCAPrevuByIdFestival(params.id)
+    }
+    catch (e) {
+        throw e
+    }
+}
+
+async function getCAReelByIdFestival(params) {
+    try {
+        return await reservation_model.getCAReelByIdFestival(params.id)
+    }
+    catch (e) {
+        throw e
+    }
+}
+
 async function updateReservation(body){
     try{
         await reservation_model.updateReservation(body.id,body.besoin_benevole_reservation,body.deplacement_reservation,
@@ -91,4 +109,4 @@ async function deleteReservation(params) {
     }
 }
 
-module.exports = {updateDateReservation,getReservationById,getReservationsByIdFestival,updateReservation,createReservation,deleteReservation}
+module.exports = {updateDateReservation,getReservationById,getCAPrevuByIdFestival,getCAReelByIdFestival,getReservationsByIdFestival,updateReservation,createReservation,deleteReservation}

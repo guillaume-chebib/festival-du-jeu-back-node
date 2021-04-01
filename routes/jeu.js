@@ -35,7 +35,6 @@ router.get('/:id', async function(req, res, next) {
 router.get('/editeur/:id', async function(req, res, next) {
     try {
         const jeux = await jeu_controller.getJeuByIdEditeur(req.params)
-        console.log(jeux)
         res.status(200).json({ message: jeux})
     }
     catch (e) {
@@ -69,7 +68,7 @@ router.get('/type/:nom', async function(req, res, next) {
 //======================= POST ========================//
 
 router.post('/', async function(req, res, next) {
-    console.log(req.body)
+
     try {
         await jeu_controller.createJeu(req.body)
 

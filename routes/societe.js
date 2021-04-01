@@ -11,7 +11,7 @@ const contact_controller = require("../controller/contact_controller")
 router.get('/', async function(req, res, next) {
     try {
         const societes = await societe_controller.getAllSociete()
-        console.log(societes)
+
         res.status(200).json({ message: societes})
     }
     catch (e) {
@@ -69,7 +69,7 @@ router.get('/:id', async function(req, res, next) {
     try {
         const societe = await societe_controller.getSocieteById(req.params)
 
-        console.log(societe)
+
         res.status(200).json({ message: societe})
     }
     catch (e) {
@@ -81,7 +81,7 @@ router.get('/:id', async function(req, res, next) {
 router.get('/:id/jeu', async function(req, res, next) {
     try {
         const jeux = await jeu_controller.getJeuByIdEditeur(req.params)
-        console.log(jeux)
+
         res.status(200).json({ message: jeux})
     }
     catch (e) {

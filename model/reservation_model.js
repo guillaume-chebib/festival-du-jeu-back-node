@@ -26,6 +26,35 @@ async function getReservationByIdFestival(id_festival) {
     }
 }
 
+async function getCAPrevuByIdFestival(id_festival) {
+    try {
+        const query = 'SELECT SUM(prix_total_reservation) AS CA_prevu ' +
+            'FROM "Reservation" ' +
+            'WHERE id_festival_reservation = $1'
+        const {rows} = await db.query(query, [id_festival])
+
+        return rows
+    }
+    catch (e) {
+        throw e
+    }
+}
+
+async function getCAReelByIdFestival(id_festival) {
+    try {
+        const query = 'SELECT SUM(prix_total_reservation) AS CA_reel ' +
+            'FROM "Reservation" ' +
+            'WHERE date_paye_facture IS NOT NULL AND id_festival_reservation = $1'
+        const {rows} = await db.query(query, [id_festival])
+
+        return rows
+    }
+    catch (e) {
+        throw e
+    }
+}
+
+
 async function updateReservation(id, besoin_benevol, deplacement, apport_jeux, reduction, cr_envoye,commentaire,prix_total_reservation) {
     try {
         console.log(id, besoin_benevol, deplacement, apport_jeux, reduction, cr_envoye,commentaire)
@@ -76,4 +105,4 @@ async function deleteReservation(id) {
     }
 }
 
-module.exports = {getReservationById, getReservationByIdFestival,updateReservation,createReservation,deleteReservation,updateReservationDate}
+module.exports = {getReservationById, getCAPrevuByIdFestival, getCAReelByIdFestival, getReservationByIdFestival,updateReservation,createReservation,deleteReservation,updateReservationDate}

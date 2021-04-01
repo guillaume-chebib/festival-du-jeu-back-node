@@ -3,7 +3,6 @@ const contact = require("../model/contact_model")
 
 async function createContact(body){
     try{
-        console.log(body)
         await contact.createContact(body.prenom_contact,body.nom_contact,body.email_contact,body.telephone_portable_contact,
             body.telephone_fixe_contact, body.fonction_contact, body.est_principal_contact,body.id_societe)
     }
