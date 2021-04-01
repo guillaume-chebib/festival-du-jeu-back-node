@@ -39,7 +39,7 @@ async function updateReservation(body){
     try{
         await reservation_model.updateReservation(body.id,body.besoin_benevole_reservation,body.deplacement_reservation,
                                                    body.apport_jeux_reservation, body.reduction_reservation, body.cr_envoye_reservation,
-                                                    body.commentaire_reservation
+                                                    body.commentaire_reservation, body.prix_total_reservation
         )
     }
     catch (e) {
@@ -59,7 +59,7 @@ async function createReservation(body){
     try{
         const id_reservation  = await reservation_model.createReservation(body.id_festival,body.id_societe,body.besoin_benevol_reservation,body.deplacement_reservation,
             body.apport_jeux_reservation, body.reduction_reservation, body.cr_envoye_reservation,
-            body.date_envoi_facture, body.date_paye_facture
+            body.date_envoi_facture, body.date_paye_facture, body.prix_total_reservation
         )
 
         const list_Espace = await espace_controller.getEspaceByIdFestival({id : body.id_festival})
