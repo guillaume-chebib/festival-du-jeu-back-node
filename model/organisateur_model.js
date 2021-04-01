@@ -15,7 +15,8 @@ async function updateOrganisateur(id,prenom,nom,email,est_admin,mot_de_passe) {
     try {
         let res
         if(mot_de_passe!==null) {
-            res = await db.query("UPDATE public.\"Organisateur\" SET prenom_organisateur = $1, nom_organisateur = $2, email_organisateur = $3 mot_de_passe_organisateur = $4 WHERE id_organisateur = $5;", [prenom, nom, email, mot_de_passe, id])
+            console.log(mot_de_passe)
+            res = await db.query("UPDATE public.\"Organisateur\" SET prenom_organisateur = $1, nom_organisateur = $2, email_organisateur = $3, mot_de_passe_organisateur = $4 WHERE id_organisateur = $5;", [prenom, nom, email, mot_de_passe, id])
         }
         else{
             res = await db.query("UPDATE public.\"Organisateur\" SET prenom_organisateur = $1, nom_organisateur = $2, email_organisateur = $3 WHERE id_organisateur = $4;", [prenom, nom, email, id])
@@ -24,6 +25,7 @@ async function updateOrganisateur(id,prenom,nom,email,est_admin,mot_de_passe) {
         return res
     }
     catch (e) {
+        console.log(e)
         throw e
     }
 }
