@@ -56,6 +56,31 @@ router.get('/:id', async function(req, res, next) {
 
 });
 
+router.get('/:id/caPrevu', async function(req, res, next) {
+    try {
+        const CAPrevu = await reservation_controller.getCAPrevuByIdFestival(req.params)
+        res.status(200).json({message:CAPrevu})
+
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't load data" });
+    }
+
+});
+
+router.get('/:id/caReel', async function(req, res, next) {
+    try {
+        const CAReel = await reservation_controller.getCAReelByIdFestival(req.params)
+        res.status(200).json({message:CAReel})
+
+    }
+    catch (e) {
+        res.status(500).json({ message: "can't load data" });
+    }
+
+});
+
+
 /**
  * =========================================================================================================================
  * Partie reservation
