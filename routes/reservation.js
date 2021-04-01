@@ -53,10 +53,9 @@ router.put('/:id/date', async function(req, res, next) {
 });
 
 router.post('/', async function(req, res, next) {
-
     try {
-        await reservation_controller.createReservation(req.body)
-        res.status(200).json({ message: "success"})
+        const id_reserv = await reservation_controller.createReservation(req.body)
+        res.status(200).json({ message: id_reserv})
     }
     catch (e) {
         res.status(500).json({ message: "can't add data" });
