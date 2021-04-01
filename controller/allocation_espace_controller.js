@@ -26,7 +26,7 @@ async function createAllocationEspace(body,params) {
 async function updateAllocationEspace(body,params) {
     try{
         return await allocation_espace.updateAllocationEspace(body.nb_table_allocation_espace,body.m2_allocation_espace,
-            body.remise_allocation_espace, params.id_espace_allocation_espace, params.id_reservation_allocation_espace
+            body.remise_allocation_espace, params.id_espace, params.id
         )
     }
     catch (e) {

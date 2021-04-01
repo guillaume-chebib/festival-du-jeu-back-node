@@ -30,9 +30,8 @@ async function getFestivalCourant(){
 
 async function createFestival(body){
     try{
-        console.log(body)
         const id = await festival.createFestival(body.annee_festival,body.nom_festival)
-        console.log(id)
+
 
         await espace_controller.createEspace({prix_table_espace : body.prix_table_espace_1,prix_surface_espace:body.prix_surface_espace_1, nb_table_espace : body.nb_table_espace_1, nom_espace:"Espace 1"}, id)
         await espace_controller.createEspace({prix_table_espace : body.prix_table_espace_2,prix_surface_espace:body.prix_surface_espace_2, nb_table_espace : body.nb_table_espace_2, nom_espace:"Espace 2"}, id)

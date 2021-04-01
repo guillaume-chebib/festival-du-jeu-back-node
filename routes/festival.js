@@ -124,7 +124,7 @@ router.get('/:id/zone', async function(req, res, next) {
     try {
         const zones = await zone_controller.getZoneByIdFestival(req.params)
         res.status(200).json({message:zones})
-        console.log(zones)
+
 
     }
     catch (e) {
