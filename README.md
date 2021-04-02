@@ -1,5 +1,13 @@
 # Festival du jeu (Back)
 
+### Auteurs
+
+* CHEBIB Guillaume
+* ISSARTEL Solène
+* LAUNOIS Remy
+
+### Installation 
+
 Il est important que le projet respecte l'architecture suivante :
 ```
 Nom dossier >
